@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAPSE.VP | Order</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="bg-[#0a0a0c] text-gray-100 min-h-screen">
+  <header class="sticky top-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg">
+        <img src="https://cdn.discordapp.com/attachments/1463475811561767039/1532617202815996026/Napse.vp.jfif" alt="NAPSE Logo" class="w-10 h-10 rounded-full" />
+        NAPSE<span class="text-purple-400">.VP</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-300">
+        <a href="index.html" class="hover:text-white">Accueil</a>
+        <a href="pods.html" class="hover:text-white">Pod Systems</a>
+        <a href="liquids.html" class="hover:text-white">E-Liquids</a>
+        <a href="disposables.html" class="hover:text-white">Chichas Jetables</a>
+        <a href="order.html" class="text-white">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <section class="text-center mb-12">
+      <p class="text-sm uppercase tracking-[0.3em] text-purple-400 mb-4">Order</p>
+      <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Formulaire de commande</h1>
+      <p class="text-gray-400">Remplissez le formulaire ci-dessous pour confirmer votre commande. Nous envoyons toutes les informations au bot de commande.</p>
+    </section>
+
+    <section class="bg-[#121217] border border-white/10 rounded-3xl p-8 shadow-lg">
+      <h2 class="text-xl font-bold text-white mb-6">Détails de la commande</h2>
+      <form id="orderForm" class="space-y-6">
+        <div>
+          <label for="orderName" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+          <input type="text" id="orderName" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" />
+        </div>
+
+        <div>
+          <label for="orderPhone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+          <input type="tel" id="orderPhone" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" />
+        </div>
+
+        <div>
+          <label for="orderCity" class="block text-sm font-medium text-gray-300 mb-2">City / Adresse</label>
+          <input type="text" id="orderCity" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" />
+        </div>
+
+        <div>
+          <label for="orderProduct" class="block text-sm font-medium text-gray-300 mb-2">Product</label>
+          <input type="text" id="orderProduct" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" placeholder="Ex: Napse Salt Nic 30ml - 45 DT" />
+        </div>
+
+        <button type="submit" class="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:from-purple-500 hover:to-indigo-500 transition-all">Submit Order</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const orderForm = document.getElementById('orderForm');
+    orderForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('orderName').value.trim();
+      const phone = document.getElementById('orderPhone').value.trim();
+      const city = document.getElementById('orderCity').value.trim();
+      const product = document.getElementById('orderProduct').value.trim();
+
+      if (!name || !phone || !city || !product) {
+        alert('Please fill all fields.');
+        return;
+      }
+
+      const payload = {
+        username: 'Order Bot',
+        avatar_url: 'https://i.imgur.com/AfFp7pu.png',
+        embeds: [
+          {
+            title: '🛒 Nouvelle Demande d\'Order',
+            color: 0xA855F7,
+            fields: [
+              { name: '👤 Full Name', value: name, inline: false },
+              { name: '📞 Phone Number', value: phone, inline: true },
+              { name: '📍 City / Adresse', value: city, inline: true },
+              { name: '📦 Product', value: product, inline: false }
+            ],
+            footer: { text: 'NAPSE.VP Order System' },
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+
+      try {
+        await fetch('https://discord.com/api/webhooks/1532614725786009680/ULFqOB7WQ42YTjzaiCyX0O2oIUFfaJzlnV52yQppFLtCh1W-Xys8T_RAW00wMSU1KEDO', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        alert('Order submitted successfully!');
+        orderForm.reset();
+      } catch (err) {
+        console.error(err);
+        alert('Request failed. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
