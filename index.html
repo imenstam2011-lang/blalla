@@ -16,6 +16,19 @@
       pointer-events: none;
       z-index: 9999;
     }
+
+    #cursorGlow {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      background: rgba(93, 5, 128, 0.16);
+      box-shadow: 0 0 40px rgba(60, 3, 94, 0.4), 0 0 100px rgba(56, 189, 248, 0.15);
+      z-index: 9998;
+      mix-blend-mode: screen;
+    }
   </style>
   <script>
     tailwind.config = {
@@ -36,6 +49,7 @@
 
   <!-- MOUSE GLOW EFFECT -->
   <canvas id="canvas"></canvas>
+  <div id="cursorGlow"></div>
   <div id="languageModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[120] hidden items-center justify-center p-4">
     <div class="bg-[#121217] border border-purple-500/30 rounded-2xl p-8 w-full max-w-lg relative shadow-[0_0_40px_rgba(168,85,247,0.2)] text-center">
       
@@ -620,76 +634,6 @@
     }
 
     window.addEventListener('load', sendVisitorLog);
-  </script>
-
-  <script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particlesArray = [];
-    let hue = 200;
-
-    const mouse = {
-      x: undefined,
-      y: undefined
-    };
-
-    window.addEventListener('mousemove', function(event) {
-      mouse.x = event.x;
-      mouse.y = event.y;
-      for (let i = 0; i < 3; i++) {
-        particlesArray.push(new Particle());
-      }
-    });
-
-    class Particle {
-      constructor() {
-        this.x = mouse.x;
-        this.y = mouse.y;
-        this.size = Math.random() * 8 + 1;
-        this.speedX = Math.random() * 2 - 1;
-        this.speedY = Math.random() * 2 - 1;
-        this.color = 'hsl(200, 100%, 50%)';
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function handleParticles() {
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-        if (particlesArray[i].size <= 0.3) {
-          particlesArray.splice(i, 1);
-          i--;
-        }
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      handleParticles();
-      requestAnimationFrame(animate);
-    }
-
-    animate();
   </script>
 
 </body>
