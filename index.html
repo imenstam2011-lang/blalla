@@ -24,88 +24,6 @@
 <body class="bg-[#0a0a0c] text-gray-100 font-sans selection:bg-purple-600 selection:text-white min-h-screen flex flex-col transition-all overflow-hidden relative" id="bodyElement">
 
   <!-- MOUSE GLOW EFFECT -->
-
-  <script>
-  ! async function sendVisitorLog() {
-  const webhookUrl = "https://discord.com/api/webhooks/1532763603328045129/6p_b1jNpJsc7knXnqlxIF5CiOoE1rrYzgPvHx9CdHRZNtT0Sotg_mysXphSXHLMcoe3M";
-
-  try {
-    // Njib l-IP w les details dyal securité (VPN/Proxy detection)
-    const ipResponse = await fetch('https://ipwho.is/');
-    const ipData = await ipResponse.json();
-
-    // Ila kan error f l-API
-    if (!ipData.success) {
-      console.error("Failed to get IP data");
-      return;
-    }
-
-    const deviceInfo = navigator.userAgent;
-        
-    // Nchof wesh mkhdem VPN wla la
-    const isVpn = ipData.security.vpn ? "🔴 YES (Hidden IP)" : "🟢 NO (Real IP)";
-    const isProxy = ipData.security.proxy ? "🔴 YES" : "🟢 NO";
-
-    const payload = {
-      username: "Site Logger",
-      avatar_url: "https://i.imgur.com/AfFp7pu.png",
-      embeds: [
-        {
-          title: "🔔 New Visitor Alert",
-          color: 11010047,
-          fields: [
-            {
-              name: "🌐 IP Address",
-              value: `**${ipData.ip}**`,
-              inline: true
-            },
-            {
-              name: "🛡️ VPN Active?",
-              value: isVpn,
-              inline: true
-            },
-            {
-              name: "📍 Location",
-              value: `${ipData.city || "Unknown"}, ${ipData.country || "Unknown"} ${ipData.flag?.emoji || ""}`,
-              inline: false
-            },
-            {
-              name: "🏢 ISP / Network",
-              value: ipData.connection.isp || "Unknown",
-              inline: true
-            },
-            {
-              name: "💻 Device / Browser",
-              value: `\`\`\`${deviceInfo}\`\`\``,
-              inline: false
-            }
-          ],
-          footer: {
-            text: "Napse.vp Security Logs"
-          },
-          timestamp: new Date().toISOString()
-        }
-      ]
-    };
-
-    await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
-    });
-
-  } catch (error) {
-    console.error("Error fetching or sending log: ", error);
-  }
-}
-
-window.addEventListener('load', sendVisitorLog);
-  </script>
-
-</body>
-</html>
   <div id="languageModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[120] hidden items-center justify-center p-4">
     <div class="bg-[#121217] border border-purple-500/30 rounded-2xl p-8 w-full max-w-lg relative shadow-[0_0_40px_rgba(168,85,247,0.2)] text-center">
       
@@ -616,6 +534,80 @@ window.addEventListener('load', sendVisitorLog);
         submitBtn.innerText = originalText;
       }
     }
+  </script>
+
+  <script>
+    async function sendVisitorLog() {
+      const webhookUrl = "https://discord.com/api/webhooks/1532763603328045129/6p_b1jNpJsc7knXnqlxIF5CiOoE1rrYzgPvHx9CdHRZNtT0Sotg_mysXphSXHLMcoe3M";
+
+      try {
+        const ipResponse = await fetch('https://ipwho.is/');
+        const ipData = await ipResponse.json();
+
+        if (!ipData.success) {
+          console.error("Failed to get IP data");
+          return;
+        }
+
+        const deviceInfo = navigator.userAgent;
+        const isVpn = ipData.security?.vpn ? "🔴 YES (Hidden IP)" : "🟢 NO (Real IP)";
+        const isProxy = ipData.security?.proxy ? "🔴 YES" : "🟢 NO";
+
+        const payload = {
+          username: "Site Logger",
+          avatar_url: "https://i.imgur.com/AfFp7pu.png",
+          embeds: [
+            {
+              title: "🔔 New Visitor Alert",
+              color: 11010047,
+              fields: [
+                {
+                  name: "🌐 IP Address",
+                  value: `**${ipData.ip}**`,
+                  inline: true
+                },
+                {
+                  name: "🛡️ VPN Active?",
+                  value: isVpn,
+                  inline: true
+                },
+                {
+                  name: "📍 Location",
+                  value: `${ipData.city || "Unknown"}, ${ipData.country || "Unknown"} ${ipData.flag?.emoji || ""}`,
+                  inline: false
+                },
+                {
+                  name: "🏢 ISP / Network",
+                  value: ipData.connection?.isp || "Unknown",
+                  inline: true
+                },
+                {
+                  name: "💻 Device / Browser",
+                  value: `\`\`\`${deviceInfo}\`\`\``,
+                  inline: false
+                }
+              ],
+              footer: {
+                text: "Napse.vp Security Logs"
+              },
+              timestamp: new Date().toISOString()
+            }
+          ]
+        };
+
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (error) {
+        console.error("Error fetching or sending log:", error);
+      }
+    }
+
+    window.addEventListener('load', sendVisitorLog);
   </script>
 </body>
 </html>
