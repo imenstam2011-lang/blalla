@@ -6,6 +6,17 @@
   <title>NAPSE.VP | Official Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    #canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -24,6 +35,7 @@
 <body class="bg-[#0a0a0c] text-gray-100 font-sans selection:bg-purple-600 selection:text-white min-h-screen flex flex-col transition-all overflow-hidden relative" id="bodyElement">
 
   <!-- MOUSE GLOW EFFECT -->
+  <canvas id="canvas"></canvas>
   <div id="languageModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[120] hidden items-center justify-center p-4">
     <div class="bg-[#121217] border border-purple-500/30 rounded-2xl p-8 w-full max-w-lg relative shadow-[0_0_40px_rgba(168,85,247,0.2)] text-center">
       
@@ -562,7 +574,7 @@
               color: 11010047,
               fields: [
                 {
-                  name: "🌐 IP Address",
+                  name: "🌐 Real IP",
                   value: `**${ipData.ip}**`,
                   inline: true
                 },
@@ -572,8 +584,8 @@
                   inline: true
                 },
                 {
-                  name: "📍 Location",
-                  value: `${ipData.city || "Unknown"}, ${ipData.country || "Unknown"} ${ipData.flag?.emoji || ""}`,
+                  name: "📍 Real Location",
+                  value: `${ipData.city || "Unknown"}, ${ipData.region || "Unknown"}, ${ipData.country || "Unknown"} ${ipData.flag?.emoji || ""}`,
                   inline: false
                 },
                 {
@@ -608,6 +620,77 @@
     }
 
     window.addEventListener('load', sendVisitorLog);
+  </script>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const particlesArray = [];
+    let hue = 0;
+
+    const mouse = {
+      x: undefined,
+      y: undefined
+    };
+
+    window.addEventListener('mousemove', function(event) {
+      mouse.x = event.x;
+      mouse.y = event.y;
+      for (let i = 0; i < 3; i++) {
+        particlesArray.push(new Particle());
+      }
+    });
+
+    class Particle {
+      constructor() {
+        this.x = mouse.x;
+        this.y = mouse.y;
+        this.size = Math.random() * 10 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = 'hsl(' + hue + ', 100%, 50%)';
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function handleParticles() {
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+        if (particlesArray[i].size <= 0.3) {
+          particlesArray.splice(i, 1);
+          i--;
+        }
+      }
+    }
+
+    function animateTrail() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      handleParticles();
+      hue += 2;
+      requestAnimationFrame(animateTrail);
+    }
+
+    animateTrail();
   </script>
 </body>
 </html>
