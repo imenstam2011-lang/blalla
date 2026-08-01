@@ -20,6 +20,30 @@
         <a href="order.html" class="hover:text-white">Order🛒</a>
         <a href="Feedback.html" class="hover:text-white">Feedbacks🪬</a>
       </nav>
+      <div class="flex items-center gap-3">
+        <button id="mobileMenuBtnTerms" aria-controls="mobileMenuTerms" aria-expanded="false" class="md:hidden p-2 rounded-lg text-white hover:bg-white/5" title="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenuTerms" class="fixed inset-0 z-40 hidden md:hidden">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute right-0 top-0 h-full w-64 bg-[#0a0a0c] text-white shadow-lg p-6 overflow-y-auto">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <img src="public/napse-logo.png" alt="NAPSE" class="w-10 h-10 rounded-full object-contain" />
+            <span class="font-bold">Napse.vp</span>
+          </div>
+          <button id="mobileMenuCloseTerms" class="p-2 rounded-md text-white hover:bg-white/5">✕</button>
+        </div>
+        <nav class="flex flex-col gap-4 text-white">
+          <a href="index.html" class="py-2">Accueil</a>
+          <a href="terms.html" class="py-2 text-white">Terms📃</a>
+          <a href="order.html" class="py-2">Order🛒</a>
+          <a href="Feedback.html" class="py-2">Feedbacks🪬</a>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -54,4 +78,14 @@
     </section>
   </main>
 </body>
+<script>
+  // Mobile menu toggle for Terms
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('mobileMenuBtnTerms');
+    const panel = document.getElementById('mobileMenuTerms');
+    const close = document.getElementById('mobileMenuCloseTerms');
+    if (btn && panel) btn.addEventListener('click', () => panel.classList.toggle('hidden'));
+    if (close && panel) close.addEventListener('click', () => panel.classList.add('hidden'));
+  });
+</script>
 </html>
