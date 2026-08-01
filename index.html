@@ -85,13 +85,13 @@
     }
   </script>
 </head>
-<body class="bg-[#0a0a0c] text-gray-100 font-sans selection:bg-purple-600 selection:text-white min-h-screen flex flex-col transition-all overflow-hidden relative" id="bodyElement">
+<body class="bg-white text-slate-900 font-sans selection:bg-purple-200 selection:text-slate-900 min-h-screen flex flex-col transition-all overflow-hidden relative" id="bodyElement">
 
   <!-- MOUSE GLOW EFFECT -->
   <canvas id="canvas"></canvas>
   <div id="cursorGlow"></div>
-  <div id="languageModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[120] hidden items-center justify-center p-4">
-    <div class="bg-[#121217] border border-purple-500/30 rounded-2xl p-8 w-full max-w-lg relative shadow-[0_0_40px_rgba(168,85,247,0.2)] text-center">
+  <div id="languageModal" class="fixed inset-0 bg-slate-100/90 backdrop-blur-sm z-[120] hidden items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl p-8 w-full max-w-lg relative shadow-[0_10px_40px_rgba(15,23,42,0.08)] text-center">
       
       <div class="flex justify-center mb-6">
         <img 
@@ -105,23 +105,23 @@
       <p class="text-gray-400 mb-8 text-sm">Veuillez choisir votre langue / Please select your language</p>
 
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <button onclick="selectLanguage('fr')" class="bg-[#0a0a0c] border border-white/10 hover:border-purple-500 hover:bg-purple-900/20 text-white font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
+        <button onclick="selectLanguage('fr')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
           <span class="text-2xl group-hover:scale-110 transition-transform">🇫🇷</span>
           <span class="text-xs">Français</span>
         </button>
-        <button onclick="selectLanguage('en')" class="bg-[#0a0a0c] border border-white/10 hover:border-purple-500 hover:bg-purple-900/20 text-white font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
+        <button onclick="selectLanguage('en')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
           <span class="text-2xl group-hover:scale-110 transition-transform">🇬🇧</span>
           <span class="text-xs">English</span>
         </button>
-        <button onclick="selectLanguage('ar')" class="bg-[#0a0a0c] border border-white/10 hover:border-purple-500 hover:bg-purple-900/20 text-white font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
+        <button onclick="selectLanguage('ar')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
           <span class="text-2xl group-hover:scale-110 transition-transform">🇹🇳</span>
           <span class="text-xs">العربية</span>
         </button>
-        <button onclick="selectLanguage('es')" class="bg-[#0a0a0c] border border-white/10 hover:border-purple-500 hover:bg-purple-900/20 text-white font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group sm:col-span-1 col-span-2 sm:col-start-auto col-start-1 w-full sm:w-auto mx-auto max-w-[150px] sm:max-w-none">
+        <button onclick="selectLanguage('es')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group sm:col-span-1 col-span-2 sm:col-start-auto col-start-1 w-full sm:w-auto mx-auto max-w-[150px] sm:max-w-none">
           <span class="text-2xl group-hover:scale-110 transition-transform">🇪🇸</span>
           <span class="text-xs">Español</span>
         </button>
-        <button onclick="selectLanguage('it')" class="bg-[#0a0a0c] border border-white/10 hover:border-purple-500 hover:bg-purple-900/20 text-white font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group sm:col-span-1 col-span-2 sm:col-start-auto col-start-2 w-full sm:w-auto mx-auto max-w-[150px] sm:max-w-none">
+        <button onclick="selectLanguage('it')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group sm:col-span-1 col-span-2 sm:col-start-auto col-start-2 w-full sm:w-auto mx-auto max-w-[150px] sm:max-w-none">
           <span class="text-2xl group-hover:scale-110 transition-transform">🇮🇹</span>
           <span class="text-xs">Italiano</span>
         </button>
@@ -130,49 +130,49 @@
   </div>
 
   <!-- POP-UP VÉRIFICATION ÂGE (+18) -->
-  <div id="ageModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[110] hidden items-center justify-center p-4">
-    <div class="bg-[#121217] border border-purple-500/30 rounded-2xl p-8 w-full max-w-md relative shadow-[0_0_40px_rgba(168,85,247,0.2)] text-center">
+  <div id="ageModal" class="fixed inset-0 bg-slate-100/90 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl p-8 w-full max-w-md relative shadow-[0_10px_40px_rgba(15,23,42,0.08)] text-center">
       <i class="fa-solid fa-triangle-exclamation text-5xl text-purple-500 mb-4"></i>
-      <h3 class="text-3xl font-black text-white mb-2 uppercase tracking-wider" data-i18n="age_title">Âge Requis</h3>
-      <p class="text-gray-400 mb-8 text-lg" data-i18n="age_desc">Avez-vous plus de 18 ans ?</p>
+      <h3 class="text-3xl font-black text-slate-900 mb-2 uppercase tracking-wider" data-i18n="age_title">Âge Requis</h3>
+      <p class="text-slate-600 mb-8 text-lg" data-i18n="age_desc">Avez-vous plus de 18 ans ?</p>
       
       <div class="flex flex-col gap-3">
         <button onclick="confirmAge()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)]" data-i18n="age_yes">
           Oui, j'ai plus de 18 ans
         </button>
-        <button onclick="rejectAge()" class="w-full bg-transparent border border-white/10 hover:border-red-500 hover:bg-red-500/10 hover:text-red-400 text-gray-400 font-medium py-3 px-4 rounded-xl transition-all" data-i18n="age_no">
+        <button onclick="rejectAge()" class="w-full bg-transparent border border-slate-200 hover:border-red-500 hover:bg-red-500/10 hover:text-red-600 text-slate-600 font-medium py-3 px-4 rounded-xl transition-all" data-i18n="age_no">
           Non, je suis mineur
         </button>
       </div>
     </div>
   </div>
 
-  <header class="sticky top-0 z-50 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/10">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3 group">
         <img 
           src="https://cdn.discordapp.com/attachments/1463475811561767039/1532617202815996026/Napse.vp.jfif?ex=6a6d807f&is=6a6c2eff&hm=24ac856f488d737bbd11c3a68e2f715989496b3d3569068c495973e6182bf076&" 
           alt="NAPSE Logo" 
-          class="w-10 h-10 rounded-full object-contain border border-purple-500/50 shadow-[0_0_12px_rgba(168,85,247,0.4)] group-hover:scale-105 transition-transform"
+          class="w-10 h-10 rounded-full object-contain border border-slate-200 shadow-[0_10px_24px_rgba(15,23,42,0.08)] group-hover:scale-105 transition-transform"
         />
-        <span class="font-extrabold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
-          NAPSE<span class="text-purple-500">.VP</span>
+        <span class="font-extrabold text-xl tracking-wider text-slate-900">
+          NAPSE<span class="text-purple-600">.VP</span>
         </span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-        <a href="index.html" class="hover:text-purple-400 transition-colors">Accueil</a>
-        <a href="terms.html" class="hover:text-purple-400 transition-colors">Terms📃</a>
-        <a href="order.html" class="hover:text-purple-400 transition-colors">Order🛒</a>
-        <a href="Feedback.html" class="hover:text-purple-400 transition-colors">Feedback🪬</a>
-        <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="hover:text-purple-400 transition-colors">Instagram</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="index.html" class="hover:text-slate-900 transition-colors">Accueil</a>
+        <a href="terms.html" class="hover:text-slate-900 transition-colors">Terms📃</a>
+        <a href="order.html" class="hover:text-slate-900 transition-colors">Order🛒</a>
+        <a href="Feedback.html" class="hover:text-slate-900 transition-colors">Feedback🪬</a>
+        <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="hover:text-slate-900 transition-colors">Instagram</a>
       </nav>
 
       <div class="flex items-center gap-4">
-        <button onclick="document.getElementById('languageModal').classList.remove('hidden'); document.getElementById('languageModal').classList.add('flex'); document.getElementById('bodyElement').classList.add('overflow-hidden');" class="text-gray-400 hover:text-white transition" title="Change Language">
+        <button onclick="document.getElementById('languageModal').classList.remove('hidden'); document.getElementById('languageModal').classList.add('flex'); document.getElementById('bodyElement').classList.add('overflow-hidden');" class="text-slate-600 hover:text-slate-900 transition" title="Change Language">
           <i class="fa-solid fa-globe"></i>
         </button>
-        <a href="order.html" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-[0_0_15px_rgba(147,51,234,0.3)] transition-all transform hover:scale-105">
+        <a href="order.html" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-[0_10px_25px_rgba(147,51,234,0.15)] transition-all transform hover:scale-105">
           Commander 💨
         </a>
       </div>
@@ -180,89 +180,89 @@
   </header>
 
   <section id="hero" class="relative max-w-7xl mx-auto px-6 pt-20 pb-28 flex flex-col items-center text-center overflow-hidden z-10">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/15 blur-[140px] rounded-full pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 blur-[140px] rounded-full pointer-events-none"></div>
 
-    <div class="inline-flex items-center gap-2.5 bg-purple-950/40 border border-purple-500/30 px-4 py-2 rounded-full mb-8 backdrop-blur-md" dir="ltr">
+    <div class="inline-flex items-center gap-2.5 bg-slate-50 border border-slate-200 px-4 py-2 rounded-full mb-8" dir="ltr">
       <img 
         src="https://cdn.discordapp.com/attachments/1463475811561767039/1532617202815996026/Napse.vp.jfif?ex=6a6d807f&is=6a6c2eff&hm=24ac856f488d737bbd11c3a68e2f715989496b3d3569068c495973e6182bf076&" 
         alt="Logo Badge" 
         class="w-6 h-6 rounded-full object-contain"
       />
-      <span class="text-xs font-semibold text-purple-300 tracking-wide uppercase">Official Napse Vape Store 🇹🇳</span>
+      <span class="text-xs font-semibold text-slate-700 tracking-wide uppercase">Official Napse Vape Store 🇹🇳</span>
     </div>
 
-    <img alt="NAPSE Logo" src="https://cdn.discordapp.com/attachments/1483131516618805490/1532746141949493359/Napse.vp.jfif?ex=6a6df895&is=6a6ca715&hm=57976c170ee32ae59577dbcd9c286e8aa4d2d5c5090374e85bc9c2cd98ef14e0&" class="w-20 h-20 rounded-full object-contain mx-auto mb-6 border-2 border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.3)]" />
+    <img alt="NAPSE Logo" src="https://cdn.discordapp.com/attachments/1483131516618805490/1532746141949493359/Napse.vp.jfif?ex=6a6df895&is=6a6ca715&hm=57976c170ee32ae59577dbcd9c286e8aa4d2d5c5090374e85bc9c2cd98ef14e0&" class="w-20 h-20 rounded-full object-contain mx-auto mb-6 border-2 border-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.08)]" />
 
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight max-w-4xl leading-tight mb-6">
-      <span data-i18n="hero_title">L'expérience Vape Ultra-Premium avec </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-500">NAPSE</span>
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight max-w-4xl leading-tight mb-6 text-slate-900">
+      <span data-i18n="hero_title">L'expérience Vape Ultra-Premium avec </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-700">NAPSE</span>
     </h1>
 
-    <p class="text-gray-400 text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed" data-i18n="hero_desc">
+    <p class="text-slate-600 text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed" data-i18n="hero_desc">
       Découvrez nos Pod Systems, E-Liquides premium et accessoires high-end. Livraison rapide disponible sur toute la Tunisie.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-      <a href="pods.html" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white font-bold px-8 py-4 rounded-xl shadow-[0_0_25px_rgba(168,85,247,0.4)] transition-all text-center">
+      <a href="pods.html" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white font-bold px-8 py-4 rounded-xl shadow-[0_10px_25px_rgba(147,51,234,0.15)] transition-all text-center">
         Voir le Catalogue 🛒
       </a>
-      <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="w-full sm:w-auto bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 font-semibold px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
-        <i class="fa-brands fa-instagram text-purple-400"></i> <span data-i18n="hero_btn_ig">Suivez-nous sur Instagram</span>
+      <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="w-full sm:w-auto bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
+        <i class="fa-brands fa-instagram text-purple-600"></i> <span data-i18n="hero_btn_ig">Suivez-nous sur Instagram</span>
       </a>
     </div>
   </section>
 
   <section id="products" class="max-w-7xl mx-auto px-6 py-16 w-full relative z-10">
     <div class="flex flex-col items-center mb-12 text-center">
-      <h2 class="text-3xl font-extrabold text-white sm:text-4xl" data-i18n="prod_title">Nos Produits Tendances 🔥</h2>
-      <p class="text-gray-400 mt-2" data-i18n="prod_desc">Sélectionnez vos articles w passe ta commande direct.</p>
+      <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl" data-i18n="prod_title">Nos Produits Tendances 🔥</h2>
+      <p class="text-slate-600 mt-2" data-i18n="prod_desc">Sélectionnez vos articles w passe ta commande direct.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-[#121217] border border-white/10 rounded-2xl p-5 hover:border-purple-500/50 transition-all group flex flex-col justify-between shadow-lg relative overflow-hidden">
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all group flex flex-col justify-between shadow-[0_10px_30px_rgba(15,23,42,0.06)] relative overflow-hidden">
         <div>
-          <div class="relative w-full h-52 bg-purple-950/20 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
+          <div class="relative w-full h-52 bg-slate-50 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
             <span class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Best Seller</span>
-            <i class="fa-solid fa-joint text-6xl text-purple-400/80 group-hover:scale-110 transition-transform"></i>
+            <i class="fa-solid fa-joint text-6xl text-purple-600 group-hover:scale-110 transition-transform"></i>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">Vaporesso Luxe Q Pod</h3>
-          <p class="text-gray-400 text-sm mb-4" data-i18n="prod1_desc">Pod system compact avec batterie 1000mAh et tirage ajustable.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Vaporesso Luxe Q Pod</h3>
+          <p class="text-slate-600 text-sm mb-4" data-i18n="prod1_desc">Pod system compact avec batterie 1000mAh et tirage ajustable.</p>
         </div>
-        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-          <span class="text-2xl font-black text-purple-400" dir="ltr">120 DT</span>
+        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+          <span class="text-2xl font-black text-slate-900" dir="ltr">120 DT</span>
           <button onclick="openCheckout('Vaporesso Luxe Q Pod', '120 DT')" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors" data-i18n="btn_buy">
             Acheter
           </button>
         </div>
       </div>
 
-      <div class="bg-[#121217] border border-white/10 rounded-2xl p-5 hover:border-purple-500/50 transition-all group flex flex-col justify-between shadow-lg">
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all group flex flex-col justify-between shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
         <div>
-          <div class="relative w-full h-52 bg-purple-950/20 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
+          <div class="relative w-full h-52 bg-slate-50 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
             <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">E-Liquid</span>
-            <i class="fa-solid fa-bottle-droplet text-6xl text-purple-400/80 group-hover:scale-110 transition-transform"></i>
+            <i class="fa-solid fa-bottle-droplet text-6xl text-purple-600 group-hover:scale-110 transition-transform"></i>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">Napse Salt Nic 30ml</h3>
-          <p class="text-gray-400 text-sm mb-4" data-i18n="prod2_desc">Saveur Fruité / Menthol intense - Nicotine Salt 20mg / 50mg.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Napse Salt Nic 30ml</h3>
+          <p class="text-slate-600 text-sm mb-4" data-i18n="prod2_desc">Saveur Fruité / Menthol intense - Nicotine Salt 20mg / 50mg.</p>
         </div>
-        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-          <span class="text-2xl font-black text-purple-400" dir="ltr">45 DT</span>
+        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+          <span class="text-2xl font-black text-slate-900" dir="ltr">45 DT</span>
           <button onclick="openCheckout('Napse Salt Nic 30ml', '45 DT')" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors" data-i18n="btn_buy">
             Acheter
           </button>
         </div>
       </div>
 
-      <div class="bg-[#121217] border border-white/10 rounded-2xl p-5 hover:border-purple-500/50 transition-all group flex flex-col justify-between shadow-lg">
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all group flex flex-col justify-between shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
         <div>
-          <div class="relative w-full h-52 bg-purple-950/20 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
+          <div class="relative w-full h-52 bg-slate-50 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
             <span class="absolute top-3 left-3 bg-fuchsia-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Disposable</span>
-            <i class="fa-solid fa-cloud text-6xl text-purple-400/80 group-hover:scale-110 transition-transform"></i>
+            <i class="fa-solid fa-cloud text-6xl text-purple-600 group-hover:scale-110 transition-transform"></i>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">Chicha Jetable 8000 Puffs</h3>
-          <p class="text-gray-400 text-sm mb-4" data-i18n="prod3_desc">Rechargeable Type-C avec écran LCD pour batterie & liquide.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Chicha Jetable 8000 Puffs</h3>
+          <p class="text-slate-600 text-sm mb-4" data-i18n="prod3_desc">Rechargeable Type-C avec écran LCD pour batterie & liquide.</p>
         </div>
-        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-          <span class="text-2xl font-black text-purple-400" dir="ltr">65 DT</span>
+        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+          <span class="text-2xl font-black text-slate-900" dir="ltr">65 DT</span>
           <button onclick="openCheckout('Chicha Jetable 8000 Puffs', '65 DT')" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors" data-i18n="btn_buy">
             Acheter
           </button>
@@ -273,77 +273,77 @@
 
   <section id="feedback" class="max-w-7xl mx-auto px-6 py-16 w-full relative z-10">
     <div class="flex flex-col items-center mb-12 text-center">
-      <h2 class="text-3xl font-extrabold text-white sm:text-4xl" data-i18n="feed_title">Avis de nos Clients 💬</h2>
-      <p class="text-gray-400 mt-2" data-i18n="feed_desc">Chouf chnowa y9oulou 3lina b3ad ma chrew men 3andna.</p>
+      <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl" data-i18n="feed_title">Avis de nos Clients 💬</h2>
+      <p class="text-slate-600 mt-2" data-i18n="feed_desc">Chouf chnowa y9oulou 3lina b3ad ma chrew men 3andna.</p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-gradient-to-br from-[#121217] to-[#1a1a24] border border-white/5 rounded-2xl p-6 shadow-xl relative overflow-hidden group hover:border-purple-500/30 transition-all">
-        <div class="flex items-center gap-1 mb-4 text-purple-400 text-sm">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden group hover:border-slate-300 transition-all">
+        <div class="flex items-center gap-1 mb-4 text-purple-600 text-sm">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
-        <p class="text-gray-300 italic mb-6">"Service tayara w livraison sria3 el Tunis. El produit original 100%, ya3tikom sa7a w nchallah dima men 7assan ila a7ssan!"</p>
+        <p class="text-slate-600 italic mb-6">"Service tayara w livraison sria3 el Tunis. El produit original 100%, ya3tikom sa7a w nchallah dima men 7assan ila a7ssan!"</p>
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-purple-900/50 rounded-full flex items-center justify-center text-purple-300 font-bold border border-purple-500/30 text-lg">M</div>
+          <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-700 font-bold border border-purple-200 text-lg">M</div>
           <div>
-            <h4 class="text-white font-bold" dir="ltr">Mehdi T.</h4>
-            <span class="text-xs text-gray-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-purple-500/70"></i> Tunis</span>
+            <h4 class="text-slate-900 font-bold" dir="ltr">Mehdi T.</h4>
+            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-purple-500/70"></i> Tunis</span>
           </div>
         </div>
       </div>
-      <div class="bg-gradient-to-br from-[#121217] to-[#1a1a24] border border-white/5 rounded-2xl p-6 shadow-xl relative overflow-hidden group hover:border-indigo-500/30 transition-all">
-        <div class="flex items-center gap-1 mb-4 text-indigo-400 text-sm">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden group hover:border-slate-300 transition-all">
+        <div class="flex items-center gap-1 mb-4 text-indigo-600 text-sm">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
-        <p class="text-gray-300 italic mb-6">"A7sen boutique vape en ligne fi Tounes. El goût mte3 e-liquid hebel, w soum ma39oul barcha par rapport l so9."</p>
+        <p class="text-slate-600 italic mb-6">"A7sen boutique vape en ligne fi Tounes. El goût mte3 e-liquid hebel, w soum ma39oul barcha par rapport l so9."</p>
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-indigo-900/50 rounded-full flex items-center justify-center text-indigo-300 font-bold border border-indigo-500/30 text-lg">S</div>
+          <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 font-bold border border-indigo-200 text-lg">S</div>
           <div>
-            <h4 class="text-white font-bold" dir="ltr">Sami B.</h4>
-            <span class="text-xs text-gray-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500/70"></i> Sousse</span>
+            <h4 class="text-slate-900 font-bold" dir="ltr">Sami B.</h4>
+            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500/70"></i> Sousse</span>
           </div>
         </div>
       </div>
-      <div class="bg-gradient-to-br from-[#121217] to-[#1a1a24] border border-white/5 rounded-2xl p-6 shadow-xl relative overflow-hidden group hover:border-fuchsia-500/30 transition-all">
-        <div class="flex items-center gap-1 mb-4 text-fuchsia-400 text-sm">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden group hover:border-slate-300 transition-all">
+        <div class="flex items-center gap-1 mb-4 text-fuchsia-600 text-sm">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
         </div>
-        <p class="text-gray-300 italic mb-6">"Chrit men 3andkom el puff jetable, mrigla w tched mli7. Livraison el Sfax jet f wa9tha mafamech retard. Merci likom!"</p>
+        <p class="text-slate-600 italic mb-6">"Chrit men 3andkom el puff jetable, mrigla w tched mli7. Livraison el Sfax jet f wa9tha mafamech retard. Merci likom!"</p>
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-fuchsia-900/50 rounded-full flex items-center justify-center text-fuchsia-300 font-bold border border-fuchsia-500/30 text-lg">A</div>
+          <div class="w-12 h-12 bg-fuchsia-100 rounded-full flex items-center justify-center text-fuchsia-700 font-bold border border-fuchsia-200 text-lg">A</div>
           <div>
-            <h4 class="text-white font-bold" dir="ltr">Amine K.</h4>
-            <span class="text-xs text-gray-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-fuchsia-500/70"></i> Sfax</span>
+            <h4 class="text-slate-900 font-bold" dir="ltr">Amine K.</h4>
+            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-fuchsia-500/70"></i> Sfax</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-[#121217] border border-purple-500/30 rounded-2xl p-6 w-full max-w-md relative">
-      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+  <div id="checkoutModal" class="fixed inset-0 bg-slate-100/85 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 w-full max-w-md relative shadow-[0_10px_40px_rgba(15,23,42,0.08)]">
+      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-900">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
       
-      <h3 class="text-2xl font-bold text-white mb-1" data-i18n="modal_title">Passer la Commande</h3>
-      <p id="modalProduct" class="text-purple-400 font-semibold mb-6" dir="ltr"></p>
+      <h3 class="text-2xl font-bold text-slate-900 mb-1" data-i18n="modal_title">Passer la Commande</h3>
+      <p id="modalProduct" class="text-purple-600 font-semibold mb-6" dir="ltr"></p>
 
       <form onsubmit="handleOrder(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-medium text-gray-400 mb-1" data-i18n="modal_name">Nom & Prénom</label>
-          <input type="text" id="clientName" required class="w-full bg-[#0a0a0c] border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-purple-500" />
+          <label class="block text-xs font-medium text-slate-500 mb-1" data-i18n="modal_name">Nom & Prénom</label>
+          <input type="text" id="clientName" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-purple-500" />
         </div>
         <div>
-          <label class="block text-xs font-medium text-gray-400 mb-1" data-i18n="modal_phone">Numéro de Téléphone</label>
-          <input type="tel" id="clientPhone" required class="w-full bg-[#0a0a0c] border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-purple-500" dir="ltr" />
+          <label class="block text-xs font-medium text-slate-500 mb-1" data-i18n="modal_phone">Numéro de Téléphone</label>
+          <input type="tel" id="clientPhone" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-purple-500" dir="ltr" />
         </div>
         <div>
-          <label class="block text-xs font-medium text-gray-400 mb-1" data-i18n="modal_city">Ville / Adresse</label>
-          <input type="text" id="clientCity" required class="w-full bg-[#0a0a0c] border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-purple-500" />
+          <label class="block text-xs font-medium text-slate-500 mb-1" data-i18n="modal_city">Ville / Adresse</label>
+          <input type="text" id="clientCity" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-purple-500" />
         </div>
 
-        <button type="submit" id="submitBtn" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)] mt-2 flex items-center justify-center gap-2">
+        <button type="submit" id="submitBtn" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition-all shadow-[0_10px_25px_rgba(147,51,234,0.15)] mt-2 flex items-center justify-center gap-2">
           <span data-i18n="modal_btn">Confirmer la Commande</span>
         </button>
       </form>
@@ -352,11 +352,11 @@
 
 
 
-  <footer class="mt-auto border-t border-white/10 bg-[#0a0a0c] py-8 text-center text-gray-500 text-sm relative z-10">
+  <footer class="mt-auto border-t border-slate-200 bg-white py-8 text-center text-slate-500 text-sm relative z-10">
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p data-i18n="footer_rights">© 2026 NAPSE.VP. Tous droits réservés.</p>
-      <div class="flex items-center gap-4 text-gray-400">
-        <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="hover:text-purple-400 text-lg"><i class="fa-brands fa-instagram"></i></a>
+      <p class="text-slate-500" data-i18n="footer_rights">© 2026 NAPSE.VP. Tous droits réservés.</p>
+      <div class="flex items-center gap-4 text-slate-500">
+        <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="hover:text-purple-600 text-lg"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>
   </footer>
