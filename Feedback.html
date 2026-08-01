@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Napse.vp | Feedbacks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body:not(.page-ready) header,
+    body:not(.page-ready) #feedback-section,
+    body:not(.page-ready) footer {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    body.page-ready header {
+      animation: fadeUp 0.7s ease-out 0.1s forwards;
+    }
+
+    body.page-ready #feedback-section {
+      animation: fadeUp 0.7s ease-out 0.2s forwards;
+    }
+
+    body.page-ready footer {
+      animation: fadeUp 0.7s ease-out 0.3s forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 font-sans min-h-screen flex flex-col transition-all overflow-x-hidden page-ready">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="https://cdn.discordapp.com/attachments/1463475811561767039/1532617202815996026/Napse.vp.jfif?ex=6a6d807f&is=6a6c2eff&hm=24ac856f488d737bbd11c3a68e2f715989496b3d3569068c495973e6182bf076&" alt="NAPSE Logo" class="w-11 h-11 rounded-full border border-slate-200 shadow-[0_10px_24px_rgba(15,23,42,0.08)] object-contain" />
+        <div>
+          <p class="font-extrabold text-lg text-slate-900">NAPSE<span class="text-purple-600">.vp</span></p>
+          <p class="text-xs text-slate-500 uppercase tracking-[0.25em]">Feedbacks</p>
+        </div>
+      </a>
+
+      <nav class="flex items-center gap-5 text-sm font-medium text-slate-600">
+        <a href="index.html" class="hover:text-slate-900 transition-colors">Accueil</a>
+        <a href="terms.html" class="hover:text-slate-900 transition-colors">Terms📃</a>
+        <a href="order.html" class="hover:text-slate-900 transition-colors">Order🛒</a>
+        <a href="Feedback.html" class="text-slate-900 font-semibold">Feedbacks🪬</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <section class="max-w-7xl mx-auto px-6 py-20 text-center">
+      <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-purple-100 via-slate-50 to-white border border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)] p-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.18),_transparent_45%)]"></div>
+        <div class="relative">
+          <p class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.32em] text-purple-600 font-semibold mb-4">
+            <span><i class="fa-solid fa-comment-dots"></i></span> Feedbacks
+          </p>
+          <h1 class="text-4xl sm:text-5xl font-black text-slate-900 mb-5">Customer Reviews</h1>
+          <p class="mx-auto max-w-2xl text-slate-600 text-lg leading-8">
+            Explore real testimonials from our customers. Every review is presented in a clean card, with star ratings, quotes, and names for a polished, trustworthy experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback-section" class="max-w-7xl mx-auto px-6 pb-24">
+      <div class="grid gap-8 lg:grid-cols-3">
+        <article class="rounded-3xl bg-white border border-slate-200 p-8 shadow-[0_20px_50px_rgba(15,23,42,0.07)] hover:-translate-y-1 transition-transform">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="flex items-center gap-2 text-slate-900 font-bold text-xl">Mehdi T.</div>
+              <p class="text-xs uppercase tracking-[0.22em] text-slate-500 mt-1">Tunis</p>
+            </div>
+            <div class="inline-flex items-center gap-1 text-purple-600">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="text-slate-600 leading-8 mb-6 italic">“Service tayara w livraison sria3 el Tunis. El produit original 100%, ya3tikom sa7a w nchallah dima men 7assan ila a7ssan!”</p>
+          <div class="rounded-3xl bg-slate-50 px-4 py-3 text-slate-500 text-sm">Produit préféré: Vaporesso Luxe Q Pod</div>
+        </article>
+
+        <article class="rounded-3xl bg-white border border-slate-200 p-8 shadow-[0_20px_50px_rgba(15,23,42,0.07)] hover:-translate-y-1 transition-transform">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="flex items-center gap-2 text-slate-900 font-bold text-xl">Sami B.</div>
+              <p class="text-xs uppercase tracking-[0.22em] text-slate-500 mt-1">Sousse</p>
+            </div>
+            <div class="inline-flex items-center gap-1 text-purple-600">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="text-slate-600 leading-8 mb-6 italic">“A7sen boutique vape en ligne fi Tounes. El goût mte3 e-liquid hebel, w soum ma39oul barcha par rapport l so9.”</p>
+          <div class="rounded-3xl bg-slate-50 px-4 py-3 text-slate-500 text-sm">Produit préféré: Napse Salt Nic 30ml</div>
+        </article>
+
+        <article class="rounded-3xl bg-white border border-slate-200 p-8 shadow-[0_20px_50px_rgba(15,23,42,0.07)] hover:-translate-y-1 transition-transform">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="flex items-center gap-2 text-slate-900 font-bold text-xl">Amine K.</div>
+              <p class="text-xs uppercase tracking-[0.22em] text-slate-500 mt-1">Sfax</p>
+            </div>
+            <div class="inline-flex items-center gap-1 text-purple-600">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+          </div>
+          <p class="text-slate-600 leading-8 mb-6 italic">“Chrit men 3andkom el puff jetable, mrigla w tched mli7. Livraison el Sfax jet f wa9tha mafamech retard. Merci likom!”</p>
+          <div class="rounded-3xl bg-slate-50 px-4 py-3 text-slate-500 text-sm">Produit préféré: Chicha Jetable 8000 Puffs</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-8 text-center text-slate-500 text-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 NAPSE.VP. Tous droits réservés.</p>
+      <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="text-slate-500 hover:text-purple-600 transition">Instagram</a>
+    </div>
+  </footer>
+</body>
+</html>
