@@ -29,6 +29,46 @@
       z-index: 9998;
       mix-blend-mode: screen;
     }
+
+    body:not(.page-ready) header,
+    body:not(.page-ready) #hero,
+    body:not(.page-ready) #products,
+    body:not(.page-ready) #feedback,
+    body:not(.page-ready) footer {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    body.page-ready header {
+      animation: fadeUp 0.70s ease-out 0.10s forwards;
+    }
+
+    body.page-ready #hero {
+      animation: fadeUp 0.70s ease-out 0.20s forwards;
+    }
+
+    body.page-ready #products {
+      animation: fadeUp 0.70s ease-out 0.30s forwards;
+    }
+
+    body.page-ready #feedback {
+      animation: fadeUp 0.70s ease-out 0.40s forwards;
+    }
+
+    body.page-ready footer {
+      animation: fadeUp 0.70s ease-out 0.50s forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
   <script>
     tailwind.config = {
@@ -608,6 +648,12 @@
     }
 
     window.addEventListener('load', sendVisitorLog);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(() => {
+        document.body.classList.add('page-ready');
+      });
+    });
   </script>
 
 </body>
