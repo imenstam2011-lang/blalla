@@ -1,65 +1,167 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NAPSE.VP | Order</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    #canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    #cursorGlow {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      background: rgba(73, 3, 100, 0.16);
+      box-shadow: 0 0 40px rgba(64, 2, 66, 0.4), 0 0 100px rgba(56, 189, 248, 0.15);
+      z-index: 9998;
+      mix-blend-mode: screen;
+    }
+  </style>
 </head>
-<body class="bg-[#0a0a0c] text-gray-100 min-h-screen">
+<body class="bg-[#0a0a0c] text-gray-100 min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <!-- MOUSE GLOW EFFECT -->
+  <canvas id="canvas"></canvas>
+  <div id="cursorGlow"></div>
+
+  <!-- HEADER -->
   <header class="sticky top-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
-      <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg min-w-0">
-        <img src="/napse-logo.png" loading="lazy" decoding="async" alt="Napse Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
+      <a href="index.html" class="flex items-center gap-3 text-white font-extrabold text-lg min-w-0">
+        <img src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" loading="lazy" decoding="async" alt="Napse Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain rounded-lg flex-shrink-0" />
         Napse<span class="text-purple-400">.vp</span>
       </a>
+
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-gray-300">
-        <a href="index.html" class="hover:text-white">Accueil</a>
-         <a href="terms.html" class="hover:text-white">Terms📃</a>
-    <a href="Feedback.html" class="hover:text-white">Feedbacks🪬</a>
-        <a href="order.html" class="text-white">Order🛒</a>
+        <a href="index.html" class="hover:text-white transition-colors">Accueil</a>
+        <a href="terms.html" class="hover:text-white transition-colors">Terms📃</a>
+        <a href="Feedback.html" class="hover:text-white transition-colors">Feedbacks🪬</a>
+        <a href="order.html" class="text-purple-400 font-bold">Order🛒</a>
       </nav>
+
+      <!-- Mobile Button -->
+      <div class="flex items-center gap-3 md:hidden">
+        <button id="mobileMenuBtnOrder" aria-controls="mobileMenuOrder" aria-expanded="false" class="p-2 rounded-lg text-white hover:bg-white/5 focus:outline-none" title="Open menu">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenuOrder" class="fixed inset-0 z-50 hidden">
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="mobileMenuBackdropOrder"></div>
+      <div class="absolute right-0 top-0 h-full w-64 bg-[#0a0a0c] border-l border-white/10 text-white shadow-2xl p-6 overflow-y-auto z-60 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <img src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" alt="NAPSE" class="w-8 h-8 object-contain rounded-lg" />
+              <span class="font-bold">Napse.vp</span>
+            </div>
+            <button id="mobileMenuCloseOrder" class="p-2 rounded-md text-gray-400 hover:text-white">
+              <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+          </div>
+          <nav class="flex flex-col gap-4 text-gray-300 font-medium">
+            <a href="index.html" class="py-2 hover:text-white transition">Accueil</a>
+            <a href="terms.html" class="py-2 hover:text-white transition">Terms📃</a>
+            <a href="Feedback.html" class="py-2 hover:text-white transition">Feedback🪬</a>
+            <a href="order.html" class="py-2 text-purple-400 font-bold">Order🛒</a>
+          </nav>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16 flex-1 w-full relative z-10">
     <section class="text-center mb-12">
-      <p class="text-sm uppercase tracking-[0.3em] text-purple-400 mb-4">Order</p>
+      <p class="text-sm uppercase tracking-[0.3em] text-purple-400 mb-4 font-bold">Order</p>
       <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Formulaire de commande</h1>
-      <p class="text-gray-400">Remplissez le formulaire ci-dessous pour confirmer votre commande. Nous envoyons toutes les informations au bot de commande.</p>
+      <p class="text-gray-400 max-w-lg mx-auto">Remplissez le formulaire ci-dessous pour confirmer votre commande. Nous envoyons toutes les informations directement au bot de commande.</p>
     </section>
 
-    <section class="bg-[#121217] border border-white/10 rounded-3xl p-8 shadow-lg">
-      <h2 class="text-xl font-bold text-white mb-6">Détails de la commande</h2>
+    <section class="bg-[#121217] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
+      <h2 class="text-xl font-bold text-white mb-6 border-b border-white/5 pb-4">Détails de la commande</h2>
       <form id="orderForm" class="space-y-6">
         <div>
           <label for="orderName" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-          <input type="text" id="orderName" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" />
+          <input type="text" id="orderName" required placeholder="Votre Nom et Prénom" class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500 transition-colors" />
         </div>
 
         <div>
           <label for="orderPhone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
-          <input type="tel" id="orderPhone" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" />
+          <input type="tel" id="orderPhone" required placeholder="Ex: 20 000 000" class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500 transition-colors" dir="ltr" />
         </div>
 
         <div>
           <label for="orderCity" class="block text-sm font-medium text-gray-300 mb-2">City / Adresse</label>
-          <input type="text" id="orderCity" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" />
+          <input type="text" id="orderCity" required placeholder="Votre Ville et Adresse complète" class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500 transition-colors" />
         </div>
 
         <div>
           <label for="orderProduct" class="block text-sm font-medium text-gray-300 mb-2">Product</label>
-          <input type="text" id="orderProduct" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-purple-500" placeholder="Ex: Napse Salt Nic 30ml - 45 DT" />
+          <input type="text" id="orderProduct" required class="w-full rounded-2xl bg-[#0a0a0c] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500 transition-colors" placeholder="Ex: Napse Salt Nic 30ml - 45 DT" />
         </div>
 
-        <button type="submit" class="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:from-purple-500 hover:to-indigo-500 transition-all">Submit Order</button>
+        <button type="submit" id="submitBtn" class="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3.5 shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:from-purple-500 hover:to-indigo-500 transition-all transform hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2">
+          <span>Submit Order 💨</span>
+        </button>
       </form>
     </section>
   </main>
 
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-[#0a0a0c] py-6 text-center text-gray-500 text-sm relative z-10">
+    <p>© 2026 NAPSE.VP. Tous droits réservés.</p>
+  </footer>
+
+  <!-- SCRIPTS -->
   <script>
+    // Mouse Glow Effect
+    const cursorGlow = document.getElementById('cursorGlow');
+    if (cursorGlow) {
+      window.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+      });
+    }
+
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('mobileMenuBtnOrder');
+      const panel = document.getElementById('mobileMenuOrder');
+      const close = document.getElementById('mobileMenuCloseOrder');
+      const backdrop = document.getElementById('mobileMenuBackdropOrder');
+
+      function toggleMenu() {
+        panel.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+      }
+
+      if (btn && panel) btn.addEventListener('click', toggleMenu);
+      if (close && panel) close.addEventListener('click', toggleMenu);
+      if (backdrop && panel) backdrop.addEventListener('click', toggleMenu);
+    });
+
+    // Discord Order Webhook Handler
     const orderForm = document.getElementById('orderForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const webhookUrl = 'https://discord.com/api/webhooks/1532614725786009680/ULFqOB7WQ42YTjzaiCyX0O2oIUFfaJzlnV52yQppFLtCh1W-Xys8T_RAW00wMSU1KEDO';
+
     orderForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -69,13 +171,18 @@
       const product = document.getElementById('orderProduct').value.trim();
 
       if (!name || !phone || !city || !product) {
-        alert('Please fill all fields.');
+        alert('Veuillez remplir tous les champs.');
         return;
       }
 
+      // Disable button during submit
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Envoi en cours...';
+
       const payload = {
+        content: 'logs',
         username: 'Order Bot',
-        avatar_url: 'https://i.imgur.com/AfFp7pu.png',
+        avatar_url: 'https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&',
         embeds: [
           {
             title: '🛒 Nouvelle Demande d\'Order',
@@ -93,53 +200,26 @@
       };
 
       try {
-        await fetch('https://discord.com/api/webhooks/1532614725786009680/ULFqOB7WQ42YTjzaiCyX0O2oIUFfaJzlnV52yQppFLtCh1W-Xys8T_RAW00wMSU1KEDO', {
+        const res = await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-                    <a href="order.html" class="text-white">Order🛒</a>
-        alert('Order submitted successfully!');
-        orderForm.reset();
-                <div class="flex items-center gap-3">
-                  <button id="mobileMenuBtnOrder" aria-controls="mobileMenuOrder" aria-expanded="false" class="md:hidden p-2 rounded-lg text-white hover:bg-white/5" title="Open menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                  </button>
-                </div>
-              /header>
 
-              <div id="mobileMenuOrder" class="fixed inset-0 z-50 hidden md:hidden">
-                <div class="absolute inset-0 bg-black/40"></div>
-                <div class="absolute right-0 top-0 h-full w-64 bg-[#0a0a0c] text-white shadow-lg p-6 overflow-y-auto z-60">
-                  <div class="flex items-center justify-between mb-6">
-                    <div class="flex items-center gap-3">
-                      <img src="/napse-logo.png" alt="NAPSE" class="w-10 h-10 object-contain" />
-                      <span class="font-bold">Napse.vp</span>
-                    </div>
-                    <button id="mobileMenuCloseOrder" class="p-2 rounded-md text-white hover:bg-white/5">✕</button>
-                  </div>
-                  <nav class="flex flex-col gap-4 text-white">
-                    <a href="index.html" class="py-2">Home</a>
-                    <a href="terms.html" class="py-2">Terms📃</a>
-                    <a href="Feedback.html" class="py-2">Feedback🪬</a>
-                  </nav>
-                </div>
-              </div>
+        if (res.ok) {
+          alert('Votre commande a été envoyée avec succès ! 🎉');
+          orderForm.reset();
+        } else {
+          alert('Erreur lors de l\'envoi. Veuillez réessayer.');
+        }
       } catch (err) {
         console.error(err);
-        alert('Request failed. Please try again.');
+        alert('Erreur réseau. Veuillez réessayer.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Submit Order 💨</span>';
       }
     });
   </script>
-    <script>
-      // Mobile menu toggle for Order
-      document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('mobileMenuBtnOrder');
-        const panel = document.getElementById('mobileMenuOrder');
-        const close = document.getElementById('mobileMenuCloseOrder');
-        if (btn && panel) btn.addEventListener('click', () => panel.classList.toggle('hidden'));
-        if (close && panel) close.addEventListener('click', () => panel.classList.add('hidden'));
-      });
-    </script>
 </body>
 </html>
