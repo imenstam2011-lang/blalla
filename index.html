@@ -1,748 +1,1046 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="BFOkHdVweXzNhn-hv6egcEj57uyHFgCDCP8DC_T7AZk" />
-  <title>Napse.vp </title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    #canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    #cursorGlow {
-      position: fixed;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      background: rgba(73, 3, 100, 0.16);
-      box-shadow: 0 0 40px rgba(64, 2, 66, 0.4), 0 0 100px rgba(56, 189, 248, 0.15);
-      z-index: 9998;
-      mix-blend-mode: screen;
-    }
-
-    body:not(.page-ready) header,
-    body:not(.page-ready) #hero,
-    body:not(.page-ready) #products,
-    body:not(.page-ready) #feedback,
-    body:not(.page-ready) footer {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-
-    html {
-      overflow-x: hidden;
-    }
-
-    body {
-      overflow-x: hidden;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    .mobile-safe {
-      max-width: 100%;
-      overflow-wrap: anywhere;
-    }
-
-    body.page-ready header {
-      animation: fadeUp 0.70s ease-out 0.10s forwards;
-    }
-
-    body.page-ready #hero {
-      animation: fadeUp 0.70s ease-out 0.20s forwards;
-    }
-
-    body.page-ready #products {
-      animation: fadeUp 0.70s ease-out 0.30s forwards;
-    }
-
-    body.page-ready #feedback {
-      animation: fadeUp 0.70s ease-out 0.40s forwards;
-    }
-
-    body.page-ready footer {
-      animation: fadeUp 0.70s ease-out 0.50s forwards;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: '#a855f7',
-            brandDark: '#0a0a0c',
-            cardBg: '#121217',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moqawlat Semi | Construction & Building Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0b1e36;
+            --accent-color: #d4af37;
+            --accent-hover: #c5a028;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+            --white: #ffffff;
+            --gray-light: #e9ecef;
+            --dev-green: #10b981;
+            --dev-blue: #3b82f6;
+            --whatsapp-color: #25d366;
+            --term-bg: #0d1117;
         }
-      }
-    }
-  </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.body.classList.add('page-ready');
-      
-      const btn = document.getElementById('mobileMenuBtn');
-      const panel = document.getElementById('mobileMenu');
-      const backdrop = document.getElementById('mobileMenuBackdrop');
-      const close = document.getElementById('mobileMenuClose');
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      function toggleMenu() {
-        panel.classList.toggle('hidden');
-        document.body.classList.toggle('overflow-hidden');
-      }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-      if (btn && panel) btn.addEventListener('click', toggleMenu);
-      if (backdrop) backdrop.addEventListener('click', toggleMenu);
-      if (close) close.addEventListener('click', toggleMenu);
-    });
-  </script>
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .logo-container h1 {
+            font-size: 1.35rem;
+            color: var(--white);
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo-container h1 span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(11, 30, 54, 0.85), rgba(11, 30, 54, 0.85)), url('https://images.unsplash.com/photo-1541888946425-d0fbb18f064f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero h2 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ddd;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .dev-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(13, 17, 23, 0.7);
+            color: var(--dev-green);
+            font-family: 'Fira Code', monospace;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .dev-btn:hover {
+            border-color: var(--dev-green);
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .api-btn { color: var(--dev-blue); }
+        .api-btn:hover {
+            border-color: var(--dev-blue);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h3 {
+            font-size: 2.25rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h4 {
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* WHY CHOOSE US SECTION */
+        .why-us-section {
+            background-color: var(--white);
+            padding: 80px 20px;
+            border-top: 1px solid var(--gray-light);
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .why-us-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .why-us-card {
+            background: var(--bg-color);
+            padding: 35px 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s;
+        }
+
+        .why-us-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .why-us-icon {
+            width: 70px; height: 70px;
+            background: rgba(11, 30, 54, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .why-us-card:hover .why-us-icon {
+            background: var(--primary-color);
+            color: var(--accent-color);
+        }
+
+        .why-us-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .why-us-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* CALCULATOR SECTION */
+        .calc-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 40px auto;
+            max-width: 800px;
+            border: 1px solid var(--gray-light);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .calc-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .calc-group select, .calc-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--gray-light);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .calc-group select:focus, .calc-group input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .calc-result {
+            margin-top: 25px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .calc-result span {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            font-weight: 900;
+            display: block;
+        }
+
+        /* INTERACTIVE SWIPE SLIDER SECTION */
+        .portfolio-section {
+            background-color: var(--bg-color);
+            padding: 80px 20px;
+        }
+
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--gray-light);
+        }
+
+        .img-comparison-container {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .img-comparison-container img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .img-after-wrap {
+            position: absolute;
+            top: 0; left: 0;
+            width: 50%; height: 100%;
+            overflow: hidden;
+        }
+
+        .img-after-wrap img {
+            width: 100%; height: 100%;
+            max-width: none;
+        }
+
+        .comparison-slider-handle {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--accent-color);
+            z-index: 10;
+            cursor: ew-resize;
+        }
+
+        .handle-circle {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px; height: 36px;
+            background: var(--primary-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            z-index: 5;
+        }
+        .badge-before { right: 10px; background-color: #e74c3c; }
+        .badge-after { left: 10px; background-color: #27ae60; }
+
+        .comparison-info { padding: 25px; }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(rgba(11, 30, 54, 0.95), rgba(11, 30, 54, 0.95)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-content { max-width: 600px; margin: 0 auto; }
+        .contact-box { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .contact-item i { font-size: 1.8rem; color: var(--accent-color); }
+
+        /* WHATSAPP QUICK CHAT WIDGET */
+        .wa-widget-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 1500;
+            transition: transform 0.3s;
+        }
+        .wa-widget-btn:hover { transform: scale(1.1); }
+
+        .wa-chat-box {
+            display: none;
+            position: fixed;
+            bottom: 95px;
+            left: 25px;
+            width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 1500;
+            overflow: hidden;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .wa-chat-header {
+            background: #075e54;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .wa-chat-title { font-size: 0.95rem; font-weight: bold; }
+        .wa-chat-status { font-size: 0.75rem; color: #d1d7db; }
+
+        .wa-chat-body {
+            padding: 15px;
+            background: #e5ddd5;
+            height: 200px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .wa-message {
+            background: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #333;
+            max-width: 80%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .wa-chat-footer {
+            padding: 10px;
+            background: #f0f0f0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .wa-chat-footer input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        .wa-send-btn {
+            background: #075e54;
+            color: white;
+            border: none;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* DEV MODALS */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terminal-window {
+            background-color: var(--term-bg);
+            width: 90%;
+            max-width: 650px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .terminal-dots { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        .terminal-title { color: #8b949e; font-size: 0.8rem; }
+
+        .terminal-body {
+            padding: 20px;
+            color: #c9d1d9;
+            font-size: 0.9rem;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+
+        .term-green { color: var(--dev-green); }
+        .term-gold { color: var(--accent-color); }
+        .term-blue { color: #58a6ff; }
+        .term-json { color: #ce9178; }
+
+        /* Footer */
+        footer {
+            background-color: #071322;
+            color: #aaa;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--dev-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: 'Fira Code', monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px; height: 8px;
+            background-color: var(--dev-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--dev-green);
+        }
+
+        @media(max-width: 768px) {
+            nav { display: none; }
+            .calc-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 2.2rem; }
+        }
+    </style>
 </head>
-<body class="bg-white text-slate-900 font-sans selection:bg-purple-200 selection:text-slate-900 min-h-screen flex flex-col transition-all overflow-x-hidden relative" id="bodyElement">
+<body>
 
-  <div class="mx-4 mt-4 rounded-xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-slate-700 shadow-sm">
-    <p class="mb-2 font-semibold">Notice</p>
-    <pre class="overflow-x-auto whitespace-pre-wrap font-mono text-xs">Ki theb t3adi commande emchi lel Order w hot shwn theb wla amel View Catalog </pre>
-  </div>
-
-  <!-- MOUSE GLOW EFFECT -->
-  <canvas id="canvas"></canvas>
-  <div id="cursorGlow"></div>
-
-  <!-- LANGUAGE MODAL -->
-  <div id="languageModal" class="fixed inset-0 bg-slate-100/90 backdrop-blur-sm z-[120] hidden items-center justify-center p-4">
-    <div class="bg-white border border-slate-200 rounded-2xl p-8 w-full max-w-lg relative shadow-[0_10px_40px_rgba(15,23,42,0.08)] text-center">
-      
-      <div class="flex justify-center mb-6">
-        <img 
-          src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" 
-          alt="Napse Logo" loading="lazy" decoding="async" 
-          class="h-16 w-auto object-contain rounded-lg shadow-md"
-        />
-      </div>
-
-      <h3 class="text-2xl font-bold text-slate-900 mb-2">Welcome to Napse.vp</h3>
-      <p class="text-slate-500 mb-8 text-sm"> Please select your language</p>
-
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <button onclick="selectLanguage('fr')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
-          <span class="text-2xl group-hover:scale-110 transition-transform">🇫🇷</span>
-          <span class="text-xs">Français</span>
-        </button>
-        <button onclick="selectLanguage('en')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
-          <span class="text-2xl group-hover:scale-110 transition-transform">🇬🇧</span>
-          <span class="text-xs">English</span>
-        </button>
-        <button onclick="selectLanguage('ar')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group">
-          <span class="text-2xl group-hover:scale-110 transition-transform">🇹🇳</span>
-          <span class="text-xs">العربية</span>
-        </button>
-        <button onclick="selectLanguage('es')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group sm:col-span-1 col-span-2 sm:col-start-auto col-start-1 w-full sm:w-auto mx-auto max-w-[150px] sm:max-w-none">
-          <span class="text-2xl group-hover:scale-110 transition-transform">🇪🇸</span>
-          <span class="text-xs">Español</span>
-        </button>
-        <button onclick="selectLanguage('it')" class="bg-slate-50 border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-900 font-medium py-3 px-4 rounded-xl transition-all flex flex-col items-center gap-2 group sm:col-span-1 col-span-2 sm:col-start-auto col-start-2 w-full sm:w-auto mx-auto max-w-[150px] sm:max-w-none">
-          <span class="text-2xl group-hover:scale-110 transition-transform">🇮🇹</span>
-          <span class="text-xs">Italiano</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- POP-UP VÉRIFICATION ÂGE (+18) -->
-  <div id="ageModal" class="fixed inset-0 bg-slate-100/90 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
-    <div class="bg-white border border-slate-200 rounded-2xl p-8 w-full max-w-md relative shadow-[0_10px_40px_rgba(15,23,42,0.08)] text-center">
-      <i class="fa-solid fa-triangle-exclamation text-5xl text-purple-500 mb-4"></i>
-      <h3 class="text-3xl font-black text-slate-900 mb-2 uppercase tracking-wider" data-i18n="age_title">Âge Requis</h3>
-      <p class="text-slate-600 mb-8 text-lg" data-i18n="age_desc">Avez-vous plus de 18 ans ?</p>
-      
-      <div class="flex flex-col gap-3">
-        <button onclick="confirmAge()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)]" data-i18n="age_yes">
-          Oui, j'ai plus de 18 ans
-        </button>
-        <button onclick="rejectAge()" class="w-full bg-transparent border border-slate-200 hover:border-red-500 hover:bg-red-500/10 hover:text-red-600 text-slate-600 font-medium py-3 px-4 rounded-xl transition-all" data-i18n="age_no">
-          Non, je suis mineur
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group min-w-0">
-        <img 
-          src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" 
-          loading="lazy" decoding="async" 
-          alt="NAPSE Logo" 
-          class="h-10 w-auto object-contain group-hover:scale-105 transition-transform flex-shrink-0"
-        />
-        <span class="font-extrabold text-xl tracking-wider text-slate-900">
-          Napse<span class="text-purple-600">.vp</span>
-        </span>
-      </a>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="index.html" class="hover:text-slate-900 transition-colors" data-i18n="nav_home">Home</a>
-        <a href="terms.html" class="hover:text-slate-900 transition-colors" data-i18n="nav_terms">Terms📃</a>
-        <a href="order.html" class="hover:text-slate-900 transition-colors" data-i18n="nav_order">Order🛒</a>
-        <a href="Feedback.html" class="hover:text-slate-900 transition-colors">Feedback🪬</a>
-        <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="hover:text-slate-900 transition-colors">Instagram</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <button onclick="openLanguageModal()" class="text-slate-600 hover:text-slate-900 transition p-2" title="Change Language">
-          <i class="fa-solid fa-globe text-lg"></i>
-        </button>
-
-        <a href="order.html" class="hidden sm:inline-flex bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-[0_10px_25px_rgba(147,51,234,0.15)] transition-all transform hover:scale-105">
-          Commander 💨
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button id="mobileMenuBtn" aria-label="Open menu" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none">
-          <i class="fa-solid fa-bars text-2xl"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu Panel -->
-    <div id="mobileMenu" class="fixed inset-0 z-50 hidden md:hidden">
-      <div class="absolute inset-0 bg-black/50" id="mobileMenuBackdrop"></div>
-      <div class="absolute right-0 top-0 h-full w-72 bg-white shadow-2xl p-6 overflow-y-auto z-60 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between pb-6 border-b border-slate-100">
-            <div class="flex items-center gap-2">
-              <img src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" alt="NAPSE" class="h-8 w-auto object-contain" />
-              <span class="font-extrabold text-lg">Napse.vp</span>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://cdn.discordapp.com/attachments/1483131516618805490/1533997955957260400/content.png?ex=6a72866d&is=6a7134ed&hm=87a3e8ce06b5250ef20948efa0668d9c932b25f043d5d1a4e272a3caa0a21092&" alt="Moqawlat Semi Logo" class="logo-img">
+                <h1>MOQAWLAT <span>SEMI</span></h1>
             </div>
-            <button id="mobileMenuClose" class="p-2 text-slate-500 hover:text-slate-900">
-              <i class="fa-solid fa-xmark text-2xl"></i>
-            </button>
-          </div>
-
-          <nav class="flex flex-col gap-4 mt-6 text-slate-700 font-medium text-base">
-            <a href="index.html" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 transition" data-i18n="nav_home">Home</a>
-            <a href="terms.html" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 transition" data-i18n="nav_terms">Terms 📃</a>
-            <a href="order.html" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 transition" data-i18n="nav_order">Order 🛒</a>
-            <a href="Feedback.html" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 transition">Feedback 🪬</a>
-            <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 transition">Instagram <i class="fa-brands fa-instagram text-purple-600 ml-1"></i></a>
-          </nav>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">🛠️خدماتنا</a></li>
+                    <li><a href="#why-us">❓لماذا نحن</a></li>
+                    <li><a href="#calculator">حاسبة التكلفة</a></li>
+                    <li><a href="#portfolio">👷‍♂️أعمالنا</a></li>
+                    <li><a href="#contact">📞اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-btn">طلب عرض سعر</a>
         </div>
+    </header>
 
-        <div class="pt-6 border-t border-slate-100">
-          <a href="order.html" class="w-full block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition">
-            Commander 💨
-          </a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>نبني أحلامك <span>بإتقان وأمانة</span></h2>
+            <p>خدمات المقاولات العامة وبناء الديار، التشطيبات، والترميم بأعلى معايير الجودة والاحترافية في تونس.</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="cta-btn">تصفح أعمالنا</a>
+                <a href="#calculator" class="btn-outline">احسب التكلفة</a>
+                <button class="dev-btn" onclick="openTerminal()"><i class="fas fa-terminal"></i> Terminal</button>
+                <button class="dev-btn api-btn" onclick="openApiModal()"><i class="fas fa-code"></i> JSON API</button>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="section-title">
+            <h3>خدماتنا الرئيسية</h3>
+            <p>نقدم حلولاً متكاملة لكل مراحل البناء والتهيئة</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-building"></i>
+                <h4>البناء العام (Gros Œuvre)</h4>
+                <p>إنجاز الهياكل الخرسانية، الأساسات، وبناء الجدران بكل دقة وثبات.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-roller"></i>
+                <h4>التشطيبات والترميم (Finition)</h4>
+                <p>تركيب السيراميك، الدهان، العزل، وتحويل الأماكن القديمة إلى تحف فنية.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h4>التهيئة الداخلية والخارجية</h4>
+                <p>أعمال الكهرباء، السباكة، الواجهات، وتجهيز الديار من الصفر حتى المفتاح.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section id="why-us" class="why-us-section">
+        <div class="section-title" style="margin-bottom: 40px;">
+            <h3>📊 Why Choose Us</h3>
+            <p>لماذا يختارنا العملاء لبناء مشاريعهم؟</p>
+        </div>
+        <div class="why-us-grid">
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h4>High Quality Materials</h4>
+                <p>نستعمل أفضل مواد البناء والتشطيب المعتمدة لضمان المتانة والصلابة طويلة الأمد.</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <h4>Experienced Team</h4>
+                <p>فريق عمل ذو خبرة كفؤة وميدانية واسعة في تنفيذ أصعب مشاريع البناء.</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h4>Competitive Prices</h4>
+                <p>أسعار تنافسية ومدروسة بعناية لتناسب ميزانيتك دون المساس بالجودة.</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h4>Professional Service</h4>
+                <p>التزام تام بالمواعيد، احترافية عالية في التعامل، وإشراف دائم على كل تفاصيل الشانتيه.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator" class="section" style="padding-bottom: 20px;">
+        <div class="calc-section">
+            <div class="section-title" style="margin-bottom: 20px;">
+                <h3>حاسبة التكلفة التقديرية 🧮</h3>
+                <p>احسب ميزانية مشروعك المبدئية في ثوانٍ</p>
+            </div>
+            <div class="calc-grid">
+                <div class="calc-group">
+                    <label for="serviceType">نوع الخدمة:</label>
+                    <select id="serviceType" onchange="calculateCost()">
+                        <option value="450">بناء عام (Gros Œuvre) - 450 د.ت/م²</option>
+                        <option value="250">تشطيبات (Finition) - 250 د.ت/م²</option>
+                        <option value="650">ترميم وبناء كامل - 650 د.ت/م²</option>
+                    </select>
+                </div>
+                <div class="calc-group">
+                    <label for="surfaceInput">المساحة التقديرية (م²):</label>
+                    <input type="number" id="surfaceInput" value="100" min="10" oninput="calculateCost()">
+                </div>
+            </div>
+            <div class="calc-result">
+                الميزانية التقديرية للمشروع:
+                <span id="totalCost">45,000 د.ت</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SWIPE SLIDER PORTFOLIO -->
+    <div id="portfolio" class="portfolio-section">
+        <div class="section-title">
+            <h3>معرض الأعمال (قبل وبعد - Swipe)</h3>
+            <p>اسحب الخط للوسط لمشاهدة التحول المذهل في المشاريع</p>
+        </div>
+        <div class="portfolio-grid">
+            
+            <div class="comparison-card">
+                <div class="img-comparison-container" id="slider1">
+                    <span class="badge badge-before">قبل</span>
+                    <span class="badge badge-after">🚀بعد</span>
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="قبل">
+                    <div class="img-after-wrap">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="بعد">
+                    </div>
+                    <div class="comparison-slider-handle" style="left: 50%;">
+                        <div class="handle-circle"><i class="fas fa-arrows-alt-h"></i></div>
+                    </div>
+                </div>
+                <div class="comparison-info">
+                    <h4>تجديد وتأهيل واجهة منزل كاملة</h4>
+                    <p>أعمال ترميم شاملة للواجهة، تغيير الطلاء، وتركيب أرضيات وتصاميم عصرية.</p>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <div class="img-comparison-container" id="slider2">
+                    <span class="badge badge-before">قبل</span>
+                    <span class="badge badge-after">🚀بعد</span>
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="قبل">
+                    <div class="img-after-wrap">
+                        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="بعد">
+                    </div>
+                    <div class="comparison-slider-handle" style="left: 50%;">
+                        <div class="handle-circle"><i class="fas fa-arrows-alt-h"></i></div>
+                    </div>
+                </div>
+                <div class="comparison-info">
+                    <h4>تهيئة وترميم غرفة معيشة وديكورات</h4>
+                    <p>إزالة الهياكل المتهالكة، إعادة تنظيم الفضاء، وتركيب ديكورات راقية حديثة.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </header>
 
-  <!-- HERO SECTION -->
-  <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-28 flex flex-col items-center text-center overflow-hidden z-10 mobile-safe">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <h3>جاهزون لتجسيد مشروعك</h3>
+            <p>تواصل معنا مباشرة عبر الهاتف لمناقشة أفكارك والحصول على استشارة مجانية.</p>
+            
+            <div class="contact-box">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <span>رقم الهاتف  (رقم مباشر)</span>
+                        <strong dir="ltr">+216 26 436 626</strong>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <span>منطقة التدخل</span>
+                        <strong>تونس وضواحيها</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="inline-flex items-center gap-2.5 bg-slate-50 border border-slate-200 px-4 py-2 rounded-full mb-6" dir="ltr">
-      <img 
-        src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" 
-        loading="lazy" decoding="async" 
-        alt="Logo Badge" 
-        class="h-5 w-auto object-contain"
-      />
-      <span class="text-xs font-semibold text-slate-700 tracking-wide uppercase">Official Napse Vape Store 🇹🇳</span>
+    <!-- WHATSAPP WIDGET -->
+    <div class="wa-widget-btn" onclick="toggleWaChat()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+    <div class="wa-chat-box" id="waChatBox">
+        <div class="wa-chat-header">
+            <div>
+                <div class="wa-chat-title">مقاولات سمي (الدعم الفوري)</div>
+                <div class="wa-chat-status">Online - يرد بسرعة</div>
+            </div>
+            <i class="fas fa-times" style="cursor:pointer;" onclick="toggleWaChat()"></i>
+        </div>
+        <div class="wa-chat-body">
+            <div class="wa-message">مرحباً بك! كيف يمكننا مساعدتك في مشروع البناء أو التشطيب اليوم؟ 👋</div>
+        </div>
+        <div class="wa-chat-footer">
+            <input type="text" id="waMsgInput" placeholder="اكتب استفسارك هنا...">
+            <button class="wa-send-btn" onclick="sendWaMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
     </div>
 
-    <img alt="NAPSE Logo" src="https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15&" loading="lazy" decoding="async" class="h-20 sm:h-28 w-auto object-contain mx-auto mb-6 rounded-xl shadow-lg" />
-
-    <h1 class="text-3xl sm:text-6xl md:text-7xl font-black tracking-tight max-w-4xl leading-tight mb-6 text-slate-900 px-2">
-      <span data-i18n="hero_title">L'expérience Vape Ultra-Premium avec </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-700">NAPSE</span>
-    </h1>
-
-    <p class="text-slate-600 text-base sm:text-xl max-w-2xl mb-8 leading-relaxed px-2" data-i18n="hero_desc">
-      Découvrez nos Pod Systems, E-Liquides premium et accessoires high-end. Livraison rapide disponible sur toute la Tunisie.
-    </p>
-
-    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-      <a href="order.html" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white font-bold px-8 py-4 rounded-xl shadow-[0_10px_25px_rgba(147,51,234,0.15)] transition-all text-center" data-i18n="hero_btn_cat">
-        Voir le Catalogue 🛒
-      </a>
-      <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="w-full sm:w-auto bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
-        <i class="fa-brands fa-instagram text-purple-600"></i> <span data-i18n="hero_btn_ig">Suivez-nous sur Instagram</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- PRODUCTS SECTION -->
-  <section id="products" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 w-full relative z-10 mobile-safe">
-    <div class="flex flex-col items-center mb-12 text-center">
-      <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl" data-i18n="prod_title">Nos Produits Tendances 🔥</h2>
-      <p class="text-slate-600 mt-2" data-i18n="prod_desc">Sélectionnez vos articles w passe ta commande direct.</p>
+    <!-- TERMINAL MODAL -->
+    <div class="modal-overlay" id="termModal">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="dot dot-red" onclick="closeModal('termModal')"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
+                <div class="terminal-title">bash - fahd@dev-environment:~</div>
+            </div>
+            <div class="terminal-body">
+                <p><span class="term-green">fahd@system:~$</span> neofetch --app "Moqawlat Semi"</p>
+                <p class="term-gold">----------------------------------------</p>
+                <p><span class="term-blue">OS:</span> Modern Web Stack (HTML5 / CSS3 / ES6)</p>
+                <p><span class="term-blue">Architecture:</span> Swipe Comparison & WA Integration</p>
+                <p><span class="term-blue">Lead Developer:</span> Fahd</p>
+                <p><span class="term-blue">Status:</span> Production Ready (Deployed)</p>
+                <p class="term-gold">----------------------------------------</p>
+            </div>
+        </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all group flex flex-col justify-between shadow-[0_10px_30px_rgba(15,23,42,0.06)] relative overflow-hidden">
-        <div>
-          <div class="relative w-full h-52 bg-slate-50 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
-            <span class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Best Seller</span>
-            <i class="fa-solid fa-joint text-6xl text-purple-600 group-hover:scale-110 transition-transform"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">Vaporesso Luxe Q Pod</h3>
-          <p class="text-slate-600 text-sm mb-4" data-i18n="prod1_desc">Pod system compact avec batterie 1000mAh et tirage ajustable.</p>
+    <!-- JSON API MODAL -->
+    <div class="modal-overlay" id="apiModal">
+        <div class="terminal-window" style="max-width: 700px;">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="dot dot-red" onclick="closeModal('apiModal')"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
+                <div class="terminal-title">GET /api/v1/services - 200 OK</div>
+            </div>
+            <div class="terminal-body">
+<pre class="term-json">{
+  <span class="term-blue">"status"</span>: <span class="term-green">200</span>,
+  <span class="term-blue">"developer"</span>: <span class="term-gold">"Fahd"</span>,
+  <span class="term-blue">"company"</span>: <span class="term-gold">"Moqawlat Semi"</span>,
+  <span class="term-blue">"whatsapp"</span>: <span class="term-gold">"+216 26 436 626"</span>,
+  <span class="term-blue">"features"</span>: [
+    <span class="term-gold">"High Quality Materials"</span>,
+    <span class="term-gold">"Experienced Team"</span>,
+    <span class="term-gold">"Competitive Prices"</span>,
+    <span class="term-gold">"Professional Service"</span>
+  ]
+}</pre>
+            </div>
         </div>
-        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
-          <span class="text-2xl font-black text-slate-900" dir="ltr">120 DT</span>
-          <button onclick="openCheckout('Vaporesso Luxe Q Pod', '120 DT')" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors" data-i18n="btn_buy">
-            Acheter
-          </button>
-        </div>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all group flex flex-col justify-between shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
-        <div>
-          <div class="relative w-full h-52 bg-slate-50 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
-            <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">E-Liquid</span>
-            <i class="fa-solid fa-bottle-droplet text-6xl text-purple-600 group-hover:scale-110 transition-transform"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">Napse Salt Nic 30ml</h3>
-          <p class="text-slate-600 text-sm mb-4" data-i18n="prod2_desc">Saveur Fruité / Menthol intense - Nicotine Salt 20mg / 50mg.</p>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
-          <span class="text-2xl font-black text-slate-900" dir="ltr">45 DT</span>
-          <button onclick="openCheckout('Napse Salt Nic 30ml', '45 DT')" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors" data-i18n="btn_buy">
-            Acheter
-          </button>
-        </div>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all group flex flex-col justify-between shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
-        <div>
-          <div class="relative w-full h-52 bg-slate-50 rounded-xl overflow-hidden mb-5 flex items-center justify-center">
-            <span class="absolute top-3 left-3 bg-fuchsia-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Disposable</span>
-            <i class="fa-solid fa-cloud text-6xl text-purple-600 group-hover:scale-110 transition-transform"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">Chicha Jetable 8000 Puffs</h3>
-          <p class="text-slate-600 text-sm mb-4" data-i18n="prod3_desc">Rechargeable Type-C avec écran LCD pour batterie & liquide.</p>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
-          <span class="text-2xl font-black text-slate-900" dir="ltr">65 DT</span>
-          <button onclick="openCheckout('Chicha Jetable 8000 Puffs', '65 DT')" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors" data-i18n="btn_buy">
-            Acheter
-          </button>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- FEEDBACK SECTION -->
-  <section id="feedback" class="max-w-7xl mx-auto px-6 py-16 w-full relative z-10">
-    <div class="flex flex-col items-center mb-12 text-center">
-      <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl" data-i18n="feed_title">Avis de nos Clients 💬</h2>
-      <p class="text-slate-600 mt-2" data-i18n="feed_desc">Chouf chnowa y9oulou 3lina b3ad ma chrew men 3andna.</p>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden group hover:border-slate-300 transition-all">
-        <div class="flex items-center gap-1 mb-4 text-purple-600 text-sm">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - <span style="color:var(--accent-color)">Moqawlat Semi</span></p>
+        
+        <div class="footer-status">
+            <div class="status-badge">
+                <span class="status-dot"></span> All Systems Operational
+            </div>
+            <div class="status-badge" style="border-color: rgba(88, 166, 255, 0.3); color: #58a6ff; background: rgba(88, 166, 255, 0.1);">
+                <i class="fas fa-code-branch"></i> v1.4.1-prod
+            </div>
+            <div class="status-badge" style="border-color: rgba(212, 175, 55, 0.3); color: var(--accent-color); background: rgba(212, 175, 55, 0.1);">
+                <i class="fas fa-laptop-code"></i> Crafted by Fahd
+            </div>
         </div>
-        <p class="text-slate-600 italic mb-6">"Service tayara w livraison sria3 el Tunis. El produit original 100%, ya3tikom sa7a w nchallah dima men 7assan ila a7ssan!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-700 font-bold border border-purple-200 text-lg">M</div>
-          <div>
-            <h4 class="text-slate-900 font-bold" dir="ltr">Mehdi T.</h4>
-            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-purple-500/70"></i> Tunis</span>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden group hover:border-slate-300 transition-all">
-        <div class="flex items-center gap-1 mb-4 text-indigo-600 text-sm">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-        </div>
-        <p class="text-slate-600 italic mb-6">"A7sen boutique vape en ligne fi Tounes. El goût mte3 e-liquid hebel, w soum ma39oul barcha par rapport l so9."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 font-bold border border-indigo-200 text-lg">S</div>
-          <div>
-            <h4 class="text-slate-900 font-bold" dir="ltr">Sami B.</h4>
-            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500/70"></i> Sousse</span>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden group hover:border-slate-300 transition-all">
-        <div class="flex items-center gap-1 mb-4 text-fuchsia-600 text-sm">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-        </div>
-        <p class="text-slate-600 italic mb-6">"Chrit men 3andkom el puff jetable, mrigla w tched mli7. Livraison el Sfax jet f wa9tha mafamech retard. Merci likom!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-fuchsia-100 rounded-full flex items-center justify-center text-fuchsia-700 font-bold border border-fuchsia-200 text-lg">A</div>
-          <div>
-            <h4 class="text-slate-900 font-bold" dir="ltr">Amine K.</h4>
-            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-fuchsia-500/70"></i> Sfax</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <div id="checkoutModal" class="fixed inset-0 bg-slate-100/85 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-white border border-slate-200 rounded-2xl p-6 w-full max-w-md relative shadow-[0_10px_40px_rgba(15,23,42,0.08)]">
-      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-900">
-        <i class="fa-solid fa-xmark text-xl"></i>
-      </button>
-      
-      <h3 class="text-2xl font-bold text-slate-900 mb-1" data-i18n="modal_title">Passer la Commande</h3>
-      <p id="modalProduct" class="text-purple-600 font-semibold mb-6" dir="ltr"></p>
+    <script>
+        // Console Log Signature
+        console.log("%c MOQAWLAT SEMI WEB SYSTEM ", "background: #0b1e36; color: #d4af37; font-size: 16px; font-weight: bold; padding: 8px; border-radius: 4px;");
+        console.log("%c > Engineered & Developed by Fahd 💻\n > Status: Operational 🚀", "color: #10b981; font-family: monospace; font-size: 12px;");
 
-      <form onsubmit="handleOrder(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-medium text-slate-500 mb-1" data-i18n="modal_name">Nom & Prénom</label>
-          <input type="text" id="clientName" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-purple-500" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-500 mb-1" data-i18n="modal_phone">Numéro de Téléphone</label>
-          <input type="tel" id="clientPhone" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-purple-500" dir="ltr" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-500 mb-1" data-i18n="modal_city">Ville / Adresse</label>
-          <input type="text" id="clientCity" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-purple-500" />
-        </div>
-
-        <button type="submit" id="submitBtn" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition-all shadow-[0_10px_25px_rgba(147,51,234,0.15)] mt-2 flex items-center justify-center gap-2">
-          <span data-i18n="modal_btn">Confirmer la Commande</span>
-        </button>
-      </form>
-    </div>
-  </div>
-
-
-
-  <footer class="mt-auto border-t border-slate-200 bg-white py-8 text-center text-slate-500 text-sm relative z-10">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-slate-500" data-i18n="footer_rights">© 2026 NAPSE.VP. Tous droits réservés.</p>
-      <div class="flex items-center gap-4 text-slate-500">
-        <a href="https://www.instagram.com/napse.vp/?hl=en" target="_blank" class="hover:text-purple-600 text-lg"><i class="fa-brands fa-instagram"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // --- MOUSE GLOW TRACKER ---
-    const cursorGlow = document.getElementById('cursorGlow');
-    window.addEventListener('mousemove', (e) => {
-      cursorGlow.style.left = e.clientX + 'px';
-      cursorGlow.style.top = e.clientY + 'px';
-    });
-
-    // --- DICTIONNAIRE DE TRADUCTION ---
-    const translations = {
-      fr: {
-        nav_home: "Accueil", nav_products: "Produits", nav_terms: "Terms", nav_order: "Commander 💨",
-        hero_title: "L'expérience Vape Ultra-Premium avec ", hero_desc: "Découvrez nos Pod Systems, E-Liquides premium et accessoires high-end. Livraison rapide disponible sur toute la Tunisie.",
-        hero_btn_cat: "Voir le Catalogue 🛒", hero_btn_ig: "Suivez-nous sur Instagram",
-        prod_title: "Nos Produits Tendances 🔥", prod_desc: "Sélectionnez vos articles w passe ta commande direct.",
-        prod1_desc: "Pod system compact avec batterie 1000mAh et tirage ajustable.",
-        prod2_desc: "Saveur Fruité / Menthol intense - Nicotine Salt 20mg / 50mg.",
-        prod3_desc: "Rechargeable Type-C avec écran LCD pour batterie & liquide.",
-        btn_buy: "Acheter",
-        feed_title: "Avis de nos Clients 💬", feed_desc: "Chouf chnowa y9oulou 3lina b3ad ma chrew men 3andna.",
-        modal_title: "Passer la Commande", modal_name: "Nom & Prénom", modal_phone: "Numéro de Téléphone", modal_city: "Ville / Adresse", modal_btn: "Confirmer la Commande",
-        footer_rights: "© 2026 NAPSE.VP. Tous droits réservés.",
-        age_title: "Âge Requis", age_desc: "Avez-vous plus de 18 ans ?", age_yes: "Oui, j'ai plus de 18 ans", age_no: "Non, je suis mineur"
-      },
-      en: {
-        nav_home: "Home", nav_products: "Products", nav_terms: "Terms", nav_order: "Order Now 💨",
-        hero_title: "The Ultra-Premium Vape Experience with ", hero_desc: "Discover our Pod Systems, Premium E-Liquids, and high-end accessories. Fast delivery across Tunisia.",
-        hero_btn_cat: "View Catalog 🛒", hero_btn_ig: "Follow us on Instagram",
-        prod_title: "Trending Products 🔥", prod_desc: "Select your items and place your order instantly.",
-        prod1_desc: "Compact pod system with 1000mAh battery and adjustable airflow.",
-        prod2_desc: "Intense Fruity / Menthol flavor - Nicotine Salt 20mg / 50mg.",
-        prod3_desc: "Type-C rechargeable with LCD screen for battery & liquid.",
-        btn_buy: "Buy Now",
-        feed_title: "Customer Reviews 💬", feed_desc: "See what our clients say after shopping with us.",
-        modal_title: "Place Your Order", modal_name: "Full Name", modal_phone: "Phone Number", modal_city: "City / Address", modal_btn: "Confirm Order",
-        footer_rights: "© 2026 NAPSE.VP. All rights reserved.",
-        age_title: "Age Verification", age_desc: "Are you 18 years or older?", age_yes: "Yes, I am 18+", age_no: "No, I am under 18"
-      },
-      ar: {
-        nav_home: "الرئيسية", nav_products: "المنتجات", nav_terms: "Terms", nav_order: "أطلب توا 💨",
-        hero_title: "تجربة الفيب الفاخرة مع ", hero_desc: "اكتشف مجموعتنا من البودات، السوائل الفاخرة والإكسسوارات. توصيل سريع لكامل تراب الجمهورية التونسية.",
-        hero_btn_cat: "تصفح الكتالوج 🛒", hero_btn_ig: "تابعنا على انستغرام",
-        prod_title: "منتجاتنا الأكثر مبيعا 🔥", prod_desc: "اختار منتجاتك وعدي الكوموند متاعك طول.",
-        prod1_desc: "بود سيستام صغير مع بطارية 1000mAh وتعديل الهواء.",
-        prod2_desc: "نكهة غلال / نعناع قوية - نيكوتين سالت 20مغ / 50مغ.",
-        prod3_desc: "قابلة للشحن Type-C مع شاشة لمتابعة البطارية والسائل.",
-        btn_buy: "إشري توا",
-        feed_title: "آراء الحرفاء 💬", feed_desc: "شوف الحرفاء متاعنا شنوة يقولو علينا.",
-        modal_title: "عدي كوموند", modal_name: "الإسم واللقب", modal_phone: "رقم الهاتف", modal_city: "المدينة / العنوان", modal_btn: "تأكيد الطلبية",
-        footer_rights: "© 2026 NAPSE.VP. كل الحقوق محفوظة.",
-        age_title: "تأكيد العمر", age_desc: "هل تجاوزت 18 سنة؟", age_yes: "نعم، عمري أكثر من 18 سنة", age_no: "لا، أنا قاصر"
-      },
-      es: {
-        nav_home: "Inicio", nav_products: "Productos", nav_terms: "Terms", nav_order: "Pedir 💨",
-        hero_title: "La experiencia Vape Ultra-Premium con ", hero_desc: "Descubre nuestros Pods, E-Líquidos premium y accesorios. Entrega rápida en toda Túnez.",
-        hero_btn_cat: "Ver Catálogo 🛒", hero_btn_ig: "Síguenos en Instagram",
-        prod_title: "Productos en Tendencia 🔥", prod_desc: "Selecciona tus artículos y realiza tu pedido.",
-        prod1_desc: "Sistema Pod compacto con batería de 1000mAh y flujo ajustable.",
-        prod2_desc: "Sabor intenso a Frutas / Mentol - Sales de Nicotina 20mg / 50mg.",
-        prod3_desc: "Recargable Type-C con pantalla LCD para batería y líquido.",
-        btn_buy: "Comprar",
-        feed_title: "Opiniones de Clientes 💬", feed_desc: "Mira lo que dicen nuestros clientes.",
-        modal_title: "Realizar Pedido", modal_name: "Nombre y Apellido", modal_phone: "Número de Teléfono", modal_city: "Ciudad / Dirección", modal_btn: "Confirmar Pedido",
-        footer_rights: "© 2026 NAPSE.VP. Todos los derechos reservados.",
-        age_title: "Verificación de edad", age_desc: "¿Tienes 18 años o más?", age_yes: "Sí, tengo más de 18 años", age_no: "No, soy menor de 18"
-      },
-      it: {
-        nav_home: "Home", nav_products: "Prodotti", nav_terms: "Terms", nav_order: "Ordina 💨",
-        hero_title: "L'esperienza Vape Ultra-Premium con ", hero_desc: "Scopri i nostri Pod System, E-Liquid premium e accessori. Consegna rapida in tutta la Tunisia.",
-        hero_btn_cat: "Vai al Catalogo 🛒", hero_btn_ig: "Seguici su Instagram",
-        prod_title: "Prodotti di Tendenza 🔥", prod_desc: "Seleziona i tuoi articoli e ordina subito.",
-        prod1_desc: "Pod system compatto con batteria da 1000mAh e flusso regolabile.",
-        prod2_desc: "Aroma intenso Fruttato / Mentolo - Nicotine Salt 20mg / 50mg.",
-        prod3_desc: "Ricaricabile Type-C con schermo LCD per batteria e liquido.",
-        btn_buy: "Acquista",
-        feed_title: "Recensioni dei Clienti 💬", feed_desc: "Guarda cosa dicono i nostri clienti.",
-        modal_title: "Effettua l'Ordine", modal_name: "Nome e Cognome", modal_phone: "Numero di Telefono", modal_city: "Città / Indirizzo", modal_btn: "Conferma l'Ordine",
-        footer_rights: "© 2026 NAPSE.VP. Tutti i diritti riservati.",
-        age_title: "Verifica dell'età", age_desc: "Hai 18 anni o più?", age_yes: "Sì, ho più di 18 anni", age_no: "No, sono minorenne"
-      }
-    };
-
-    // --- GESTION DES MODALS (LANGUE ET +18) ---
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('napse_lang');
-      const savedAge = localStorage.getItem('napse_age_verified');
-      const body = document.getElementById('bodyElement');
-
-      if (!savedLang) {
-        document.getElementById('languageModal').classList.remove('hidden');
-        document.getElementById('languageModal').classList.add('flex');
-        body.classList.add('overflow-hidden');
-      } else {
-        applyLanguage(savedLang);
-        if (!savedAge) {
-          document.getElementById('ageModal').classList.remove('hidden');
-          document.getElementById('ageModal').classList.add('flex');
-          body.classList.add('overflow-hidden');
-        } else {
-          body.classList.remove('overflow-hidden');
-        }
-      }
-    });
-
-    function selectLanguage(lang) {
-      localStorage.setItem('napse_lang', lang);
-      document.getElementById('languageModal').classList.add('hidden');
-      document.getElementById('languageModal').classList.remove('flex');
-      
-      applyLanguage(lang);
-
-      if (!localStorage.getItem('napse_age_verified')) {
-        document.getElementById('ageModal').classList.remove('hidden');
-        document.getElementById('ageModal').classList.add('flex');
-      } else {
-        document.getElementById('bodyElement').classList.remove('overflow-hidden');
-      }
-    }
-
-    function confirmAge() {
-      localStorage.setItem('napse_age_verified', 'true');
-      document.getElementById('ageModal').classList.add('hidden');
-      document.getElementById('ageModal').classList.remove('flex');
-      document.getElementById('bodyElement').classList.remove('overflow-hidden');
-    }
-
-    function rejectAge() {
-      window.location.href = "https://www.google.com";
-    }
-
-    function applyLanguage(lang) {
-      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-      document.documentElement.lang = lang;
-
-      const elements = document.querySelectorAll('[data-i18n]');
-      elements.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          el.innerText = translations[lang][key];
-        }
-      });
-    }
-
-    // --- LOGIQUE COMMANDE (WEBHOOK) ---
-    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1532614725786009680/ULFqOB7WQ42YTjzaiCyX0O2oIUFfaJzlnV52yQppFLtCh1W-Xys8T_RAW00wMSU1KEDO";
-    const LOGO_URL = "https://cdn.discordapp.com/attachments/1506255547169640553/1533029157481484328/Napse.vp.jfif?ex=6a6f0029&is=6a6daea9&hm=62501d9117095c205f724a771748f643922fb63cb93de7607b96bdb7a9702b15";
-
-    function openCheckout(productName, price) {
-      document.getElementById('modalProduct').innerText = productName + ' - ' + price;
-      document.getElementById('checkoutModal').classList.remove('hidden');
-      document.getElementById('checkoutModal').classList.add('flex');
-    }
-
-    function closeCheckout() {
-      document.getElementById('checkoutModal').classList.add('hidden');
-      document.getElementById('checkoutModal').classList.remove('flex');
-    }
-
-    async function handleOrder(e) {
-      e.preventDefault();
-
-      const submitBtn = document.getElementById('submitBtn');
-      const originalText = submitBtn.innerText;
-      submitBtn.disabled = true;
-      submitBtn.innerText = "...";
-
-      const name = document.getElementById('clientName').value;
-      const phone = document.getElementById('clientPhone').value;
-      const city = document.getElementById('clientCity').value;
-      const product = document.getElementById('modalProduct').innerText;
-
-      const payload = {
-        username: "Napse Store Bot",
-        avatar_url: LOGO_URL,
-        embeds: [
-          {
-            title: "🛒 Nouvelle Commande Reçue!",
-            color: 0xa855f7,
-            thumbnail: { url: LOGO_URL },
-            fields: [
-              { name: "📦 Produit", value: product, inline: false },
-              { name: "👤 Nom du Client", value: name, inline: true },
-              { name: "📞 Téléphone", value: phone, inline: true },
-              { name: "📍 Adresse / Ville", value: city, inline: true }
-            ],
-            footer: { text: "Napse Store • Orders Management System" },
-            timestamp: new Date().toISOString()
-          }
-        ]
-      };
-
-      try {
-        const response = await fetch(DISCORD_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        if (response.ok) {
-          alert("✅ Commande transmise avec succès ! / Order sent successfully!");
-          closeCheckout();
-          e.target.reset();
-        } else {
-          alert("❌ Erreur / Error.");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("❌ Erreur de connexion / Connection error.");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = originalText;
-      }
-    }
-  </script>
-
-  <script>
-    async function sendVisitorLog() {
-      const webhookUrl = "https://discord.com/api/webhooks/1532763603328045129/6p_b1jNpJsc7knXnqlxIF5CiOoE1rrYzgPvHx9CdHRZNtT0Sotg_mysXphSXHLMcoe3M";
-
-      try {
-        const ipResponse = await fetch('https://ipwho.is/');
-        const ipData = await ipResponse.json();
-
-        if (!ipData.success) {
-          console.error("Failed to get IP data");
-          return;
+        // Cost Calculator Function
+        function calculateCost() {
+            let pricePerM = parseFloat(document.getElementById('serviceType').value);
+            let surface = parseFloat(document.getElementById('surfaceInput').value);
+            if (isNaN(surface) || surface < 0) surface = 0;
+            let total = pricePerM * surface;
+            document.getElementById('totalCost').innerText = total.toLocaleString('fr-TN') + ' د.ت';
         }
 
-        const deviceInfo = navigator.userAgent;
-        const isVpn = ipData.security?.vpn ? "🔴 YES (Hidden IP)" : "🟢 NO (Real IP)";
-        const isProxy = ipData.security?.proxy ? "🔴 YES" : "🟢 NO";
+        // Swipe Comparison Sliders Logic
+        document.querySelectorAll('.img-comparison-container').forEach(container => {
+            let sliderHandle = container.querySelector('.comparison-slider-handle');
+            let afterWrap = container.querySelector('.img-after-wrap');
+            let isDragging = false;
 
-        const payload = {
-          username: "Site Logger",
-          avatar_url: "https://i.imgur.com/AfFp7pu.png",
-          embeds: [
-            {
-              title: "🔔 New Visitor Alert",
-              color: 11010047,
-              fields: [
-                {
-                  name: "🌐 Real IP",
-                  value: `**${ipData.ip}**`,
-                  inline: true
-                },
-                {
-                  name: "🛡️ VPN Active?",
-                  value: isVpn,
-                  inline: true
-                },
-                {
-                  name: "📍 Real Location",
-                  value: `${ipData.city || "Unknown"}, ${ipData.region || "Unknown"}, ${ipData.country || "Unknown"} ${ipData.flag?.emoji || ""}`,
-                  inline: false
-                },
-                {
-                  name: "🏢 ISP / Network",
-                  value: ipData.connection?.isp || "Unknown",
-                  inline: true
-                },
-                {
-                  name: "💻 Device / Browser",
-                  value: `\`\`\`${deviceInfo}\`\`\``,
-                  inline: false
-                }
-              ],
-              footer: {
-                text: "Napse.vp Security Logs"
-              },
-              timestamp: new Date().toISOString()
+            function updateSlider(clientX) {
+                let rect = container.getBoundingClientRect();
+                let x = clientX - rect.left;
+                let percent = (x / rect.width) * 100;
+                if (percent < 0) percent = 0;
+                if (percent > 100) percent = 100;
+                
+                sliderHandle.style.left = percent + '%';
+                afterWrap.style.width = percent + '%';
             }
-          ]
-        };
 
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
+            sliderHandle.addEventListener('mousedown', () => isDragging = true);
+            window.addEventListener('mouseup', () => isDragging = false);
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.clientX);
+            });
+
+            // Touch Support for Mobile
+            sliderHandle.addEventListener('touchstart', () => isDragging = true);
+            window.addEventListener('touchend', () => isDragging = false);
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.touches[0].clientX);
+            });
+
+            // Click on container to jump
+            container.addEventListener('click', (e) => {
+                updateSlider(e.clientX);
+            });
         });
-      } catch (error) {
-        console.error("Error fetching or sending log:", error);
-      }
-    }
 
-    window.addEventListener('load', sendVisitorLog);
+        // WhatsApp Widget Toggle & Send
+        function toggleWaChat() {
+            let box = document.getElementById('waChatBox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      requestAnimationFrame(() => {
-        document.body.classList.add('page-ready');
-      });
-    });
-  </script>
+        function sendWaMessage() {
+            let input = document.getElementById('waMsgInput');
+            let text = input.value.trim();
+            if(!text) return;
+            
+            let url = "https://api.whatsapp.com/send?phone=21626436626&text=" + encodeURIComponent(text);
+            window.open(url, '_blank');
+            input.value = '';
+        }
 
+        // Modal Controls
+        function openTerminal() { document.getElementById('termModal').style.display = 'flex'; }
+        function openApiModal() { document.getElementById('apiModal').style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
